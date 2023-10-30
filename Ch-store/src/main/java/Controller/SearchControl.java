@@ -15,16 +15,13 @@ import Model.Products;
 import dataAccessObject.DAO;
 
 /**
- * Servlet implementation class ProductsControl
+ * Servlet implementation class SearchControl
  */
-@WebServlet(name = "Products", urlPatterns = { "/Products" })
-public class ProductsControl extends HttpServlet {
+@WebServlet(name = "Search", urlPatterns = { "/Search" })
+public class SearchControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ProductsControl() {
+    public SearchControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,21 +30,18 @@ public class ProductsControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-
+		request.setCharacterEncoding("utf-8");
+		String txtSearch = request.getParameter("txt"); //Lưu giá trị nhập vào
 		
-		// Lấy dữ liệu từ DataLoad
-		DAO dataLoad = new DAO(); 
-
-		List<Products> listProducts = dataLoad.getAllProducts();
+		DAO dataLoad = new DAO();
+		List<Products> searchProducts = dataLoad.searchByName(txtSearch);
 		List<Category> listCategories = dataLoad.getAllCategories();
 		List<Menu> listMenu = dataLoad.getAllMenus();
 		
-
-		// set data lên html
-
+		request.setAttribute("txtS", txtSearch);
 		request.setAttribute("listM", listMenu);
-		request.setAttribute("listProducts", listProducts);
 		request.setAttribute("listCategories", listCategories);
+		request.setAttribute("listProducts", searchProducts);
 		request.getRequestDispatcher("/Products.jsp").forward(request, response);
 	}
 

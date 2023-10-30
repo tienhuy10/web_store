@@ -20,14 +20,14 @@ public class DBConnection {
     private final String userID = "sa";
     private final String password = "123456";
     
-    public static void main(String[] args) {
-    	try {
-    		System.out.println(new DBConnection().getConnection());
-			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
-    }
+//    public static void main(String[] args) {
+//    	try {
+//    		System.out.println(new DBConnection().getConnection());
+//			
+//		} catch (Exception e) {
+//			System.out.println(e.getMessage());
+//		}
+//    }
 
 
 }

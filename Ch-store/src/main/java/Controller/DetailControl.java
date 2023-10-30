@@ -9,22 +9,21 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Category;
 import Model.Menu;
 import Model.Products;
 import dataAccessObject.DAO;
 
 /**
- * Servlet implementation class ProductsControl
+ * Servlet implementation class DetailControl
  */
-@WebServlet(name = "Products", urlPatterns = { "/Products" })
-public class ProductsControl extends HttpServlet {
+@WebServlet(name = "Detail", urlPatterns = { "/Detail" })
+public class DetailControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public ProductsControl() {
+    public DetailControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,23 +32,17 @@ public class ProductsControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-
+		String id = request.getParameter("id");
 		
-		// Lấy dữ liệu từ DataLoad
-		DAO dataLoad = new DAO(); 
-
-		List<Products> listProducts = dataLoad.getAllProducts();
-		List<Category> listCategories = dataLoad.getAllCategories();
+		DAO dataLoad = new DAO();
+		Products products = dataLoad.getProductsbyID(id);
 		List<Menu> listMenu = dataLoad.getAllMenus();
-		
-
-		// set data lên html
-
 		request.setAttribute("listM", listMenu);
-		request.setAttribute("listProducts", listProducts);
-		request.setAttribute("listCategories", listCategories);
-		request.getRequestDispatcher("/Products.jsp").forward(request, response);
+		
+		request.setAttribute("products", products);
+		request.getRequestDispatcher("/Detail.jsp").forward(request, response);
 	}
+
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

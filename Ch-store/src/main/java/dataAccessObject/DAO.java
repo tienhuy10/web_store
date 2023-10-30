@@ -16,7 +16,7 @@ public class DAO {
 	PreparedStatement ps = null; // Truy vấn sql
 	ResultSet rs = null; // Nhận kết quẳ
 
-	// Lấy dữ liệu bảng Menu
+	// Lấy danh sách dữ liệu bảng Menu
 	public List<Menu> getAllMenus() {
 		List<Menu> listMenu = new ArrayList<>();
 		String query = "select * from menu";
@@ -33,7 +33,7 @@ public class DAO {
 		return listMenu;
 	}
 
-	// lấy dữ liệu sản phẩm mới nhất bảng product
+	// lấy danh sách dữ liệu sản phẩm mới nhất bảng product
 	public List<Products> getLast() {
 		List<Products> listProNew = new ArrayList<>();
 		String query = "select top 8*from Products order by id desc";
@@ -50,7 +50,7 @@ public class DAO {
 		return listProNew;
 	}
 
-	// lấy dữ liệu tất cả sản phẩm bảng product
+	// lấy danh sách dữ liệu tất cả sản phẩm bảng product
 	public List<Products> getAllProducts() {
 		List<Products> listProducts = new ArrayList<>();
 		String query = "select*from Products";
@@ -67,7 +67,7 @@ public class DAO {
 		return listProducts;
 	}
 	
-	// lấy dữ liệu sản phẩm theo category
+	// lấy danh sách dữ liệu sản phẩm theo category
 	public List<Products> getProductsbyCate(String id) {
 		List<Products> listProducts1 = new ArrayList<>();
 		String query = "select*from Products where CateID = ?";
@@ -85,8 +85,26 @@ public class DAO {
 		}
 		return listProducts1;
 	}
+	
+//	// lấy dữ liệu sản phẩm theo ID
+	public Products getProductsbyID(String id) {
+		String query = "select*from Products where id = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getInt(7)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
 
-	// Lấy dữ liệu Category
+	// Lấy danh sách dữ liệu Category
 	public List<Category> getAllCategories() {
 		List<Category> listCategories = new ArrayList<>();
 		String query = "select*from Categories";
@@ -101,6 +119,27 @@ public class DAO {
 		}
 		return listCategories;
 	}
+	
+//	// lấy dữ liệu sản phẩm người dùng tìm kiếm
+	public List<Products> searchByName(String txtSeach) {
+		List<Products> searchProducts = new ArrayList<>();
+		String query = "select*from [Products] where Title like ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, "%" + txtSeach + "%");
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				searchProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getInt(7)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return searchProducts;
+	}
+	
+	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -109,9 +148,10 @@ public class DAO {
 		List<Products> listProNew = dataLoad.getLast();
 		List<Products> listProducts = dataLoad.getAllProducts();
 		List<Category> listCategories = dataLoad.getAllCategories();
-		List<Products> listProducts1 = dataLoad.getProductsbyCate("1");
+		List<Products> searchProducts = dataLoad.searchByName("a");
+		
 
-		for (Menu o : listMenu) {
+		for (Products o : searchProducts) {
 			System.out.println(o);
 		}
 

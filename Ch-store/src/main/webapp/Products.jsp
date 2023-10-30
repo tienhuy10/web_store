@@ -39,29 +39,8 @@
 </head>
 
 <body>
-	<!--Main Navigation-->
-	<header>
-		<%@ include file="/Head.jsp"%>
 
-		<!-- Heading -->
-		<div class="bg-primary mb-4">
-			<div class="container py-4">
-				<h3 class="text-white mt-2">Men's wear</h3>
-				<!-- Breadcrumb -->
-				<nav class="d-flex mb-2">
-					<h6 class="mb-0">
-						<a href="" class="text-white-50">Home</a> <span
-							class="text-white-50 mx-2"> > </span> <a href=""
-							class="text-white-50">Library</a> <span
-							class="text-white-50 mx-2"> > </span> <a href=""
-							class="text-white"><u>Data</u></a>
-					</h6>
-				</nav>
-				<!-- Breadcrumb -->
-			</div>
-		</div>
-		<!-- Heading -->
-	</header>
+	<%@ include file="/Head.jsp"%>
 
 	<!-- sidebar + content -->
 	<section class="">
@@ -96,11 +75,14 @@
 									<div class="accordion-body">
 										<ul class="list-unstyled">
 											<c:forEach items="${listCategories}" var="lc">
-												<li><a href="category?id=${lc.ID}" class="text-dark">${lc.name}</a></li>
+												<li><a href="category?id=${lc.ID}"
+													class="text-dark d-block p-2" data-bs-toggle="pill"
+													role="tab" aria-selected="false">${lc.name}</a></li>
 											</c:forEach>
 										</ul>
 									</div>
 								</div>
+
 							</div>
 
 							<!-- 							<div class="accordion-item"> -->
@@ -327,18 +309,16 @@
 									<div class="card-body d-flex flex-column">
 										<div class="d-flex flex-row">
 											<h5 class="mb-1 me-1">${p.price}</h5>
-											<span class="text-danger"><s>$49.99</s></span>
+											<span class="text-danger"><s>${p.price}</s></span>
 										</div>
 										<p class="card-text">${p.title}</p>
 										<div
 											class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-											<a href="#!" class="btn btn-primary shadow-0 me-1">Chi
-												tiết</a> <a href="#!"
-												class="btn btn-light border px-3 py-2 icon-hover me-1"><i
-												class="fas fa-shopping-cart"></i></a> <a href="#!"
-												class="btn btn-light border px-3 py-2 icon-hover"> <i
-												class="fas fa-heart fa-lg text-secondary"></i>
-											</a>
+											<a class="btn btn-primary shadow-0 me-1" href="detail?id=${p.ID}">Chi tiết</a> 
+											<a href="#!" class="btn btn-light border px-3 py-2 icon-hover me-1">
+												<i class="fas fa-shopping-cart"></i></a> 
+											<a href="#!" class="btn btn-light border px-3 py-2 icon-hover"> 
+												<i class="fas fa-heart fa-lg text-secondary"></i></a>
 
 										</div>
 									</div>

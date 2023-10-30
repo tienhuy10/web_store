@@ -5,9 +5,10 @@
 	id="WebApp_ID" version="4.0">
 	<display-name>Ch-store</display-name>
 	<welcome-file-list>
-		<welcome-file>index.html</welcome-file>
+		<welcome-file></welcome-file>
 	</welcome-file-list>
 
+	<!-- Servlet Menu -->
 	<servlet>
 		<servlet-name>Menu</servlet-name>
 		<servlet-class>Controller.MenuControl</servlet-class>
@@ -16,8 +17,9 @@
 		<servlet-name>Menu</servlet-name>
 		<url-pattern>/menu</url-pattern>
 	</servlet-mapping>
-	
-		<servlet>
+
+	<!-- Servlet Category -->
+	<servlet>
 		<servlet-name>Category</servlet-name>
 		<servlet-class>Controller.CategoryControl</servlet-class>
 	</servlet>
@@ -25,6 +27,27 @@
 		<servlet-name>Category</servlet-name>
 		<url-pattern>/category</url-pattern>
 	</servlet-mapping>
-	
+
+	<!-- Servlet Detail -->
+	<servlet>
+		<servlet-name>Detail</servlet-name>
+		<servlet-class>Controller.DetailControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Detail</servlet-name>
+		<url-pattern>/detail</url-pattern>
+	</servlet-mapping>
+
+	<!-- Servlet Detail -->
+	<servlet>
+		<servlet-name>Search</servlet-name>
+		<servlet-class>Controller.SearchControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Search</servlet-name>
+		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+
+
 
 </web-app>

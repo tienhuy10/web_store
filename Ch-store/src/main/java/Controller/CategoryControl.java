@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Model.Category;
+import Model.Menu;
 import Model.Products;
 import dataAccessObject.DAO;
 
@@ -34,6 +35,11 @@ public class CategoryControl extends HttpServlet {
 		DAO dataLoad = new DAO();
 		List<Products> listProducts = dataLoad.getProductsbyCate(id);
 		List<Category> listCategories = dataLoad.getAllCategories();
+		List<Menu> listMenu = dataLoad.getAllMenus();
+		
+
+		// set data lên html
+		request.setAttribute("listM", listMenu);
 		
 		request.setAttribute("listProducts", listProducts);
 		request.setAttribute("listCategories", listCategories);
