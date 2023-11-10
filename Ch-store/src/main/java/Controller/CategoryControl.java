@@ -43,7 +43,7 @@ public class CategoryControl extends HttpServlet {
 		
 		request.setAttribute("listProducts", listProducts);
 		request.setAttribute("listCategories", listCategories);
-		request.getRequestDispatcher("/Products.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/Products.jsp").forward(request, response);
 	}
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub

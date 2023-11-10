@@ -13,7 +13,7 @@ import Model.Menu;
 import Model.Products;
 import dataAccessObject.DAO;
 
-/**
+/** 
  * Servlet implementation class HomeControl
  */
 @WebServlet(name = "Home", urlPatterns = { "/Home" })

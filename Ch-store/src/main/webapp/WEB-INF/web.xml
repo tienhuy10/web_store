@@ -38,7 +38,7 @@
 		<url-pattern>/detail</url-pattern>
 	</servlet-mapping>
 
-	<!-- Servlet Detail -->
+	<!-- Servlet Search -->
 	<servlet>
 		<servlet-name>Search</servlet-name>
 		<servlet-class>Controller.SearchControl</servlet-class>
@@ -46,6 +46,26 @@
 	<servlet-mapping>
 		<servlet-name>Search</servlet-name>
 		<url-pattern>/search</url-pattern>
+	</servlet-mapping>
+
+	<!-- Servlet Login -->
+	<servlet>
+		<servlet-name>Login</servlet-name>
+		<servlet-class>adminController.LoginControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Login</servlet-name>
+		<url-pattern>/login</url-pattern>
+	</servlet-mapping>
+	
+		<!-- Servlet Login -->
+	<servlet>
+		<servlet-name>signup</servlet-name>
+		<servlet-class>adminController.SignUpControl</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>signup</servlet-name>
+		<url-pattern>/signup</url-pattern>
 	</servlet-mapping>
 
 

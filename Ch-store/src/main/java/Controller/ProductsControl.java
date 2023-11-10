@@ -48,7 +48,7 @@ public class ProductsControl extends HttpServlet {
 		request.setAttribute("listM", listMenu);
 		request.setAttribute("listProducts", listProducts);
 		request.setAttribute("listCategories", listCategories);
-		request.getRequestDispatcher("/Products.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/Products.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

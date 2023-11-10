@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DataConnect.DBConnection;
+import Model.Account;
 import Model.Category;
 import Model.Menu;
 import Model.Products;
@@ -149,11 +150,7 @@ public class DAO {
 		List<Products> listProducts = dataLoad.getAllProducts();
 		List<Category> listCategories = dataLoad.getAllCategories();
 		List<Products> searchProducts = dataLoad.searchByName("a");
-		
 
-		for (Products o : searchProducts) {
-			System.out.println(o);
-		}
 
 	}
 

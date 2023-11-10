@@ -40,7 +40,7 @@ public class DetailControl extends HttpServlet {
 		request.setAttribute("listM", listMenu);
 		
 		request.setAttribute("products", products);
-		request.getRequestDispatcher("/Detail.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/Detail.jsp").forward(request, response);
 	}
 
 

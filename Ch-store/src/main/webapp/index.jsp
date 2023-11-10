@@ -8,7 +8,7 @@
 <meta name="viewport"
 	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" />
-<title>Material Design for Bootstrap</title>
+<title>CH Store</title>
 <!-- Font Awesome -->
 <link rel="stylesheet"
 	href="https://use.fontawesome.com/releases/v5.11.2/css/all.css" />
@@ -36,9 +36,9 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.4.2/mdb.min.js"></script>
 </head>
 <body>
-	<%@ include file="/Head.jsp"%>
-	<%@ include file="/Home.jsp"%>
-	<%@ include file="/Footer.jsp"%>
+	<%@ include file="/views/Head.jsp"%>
+	<%@ include file="/views/Home.jsp"%>
+	<%@ include file="/views/Footer.jsp"%>
 
 	<script type="text/javascript" src="js/mdb.min.js"></script>
 	<!-- Custom scripts -->
