@@ -57,8 +57,8 @@
 		<servlet-name>Login</servlet-name>
 		<url-pattern>/login</url-pattern>
 	</servlet-mapping>
-	
-		<!-- Servlet Login -->
+
+	<!-- Servlet Login -->
 	<servlet>
 		<servlet-name>signup</servlet-name>
 		<servlet-class>adminController.SignUpControl</servlet-class>
@@ -68,6 +68,24 @@
 		<url-pattern>/signup</url-pattern>
 	</servlet-mapping>
 
-
+	<!-- Servlet Login -->
+	<servlet>
+		<servlet-name>menu-create</servlet-name>
+		<servlet-class>adminController.createMenu</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>menu-create</servlet-name>
+		<url-pattern>/menu-create</url-pattern>
+	</servlet-mapping>
+	
+	<!-- load menu edit -->
+	<servlet>
+		<servlet-name>loadMenu</servlet-name>
+		<servlet-class>adminController.loadMenu</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>loadMenu</servlet-name>
+		<url-pattern>/loadMenu</url-pattern>
+	</servlet-mapping>
 
 </web-app>

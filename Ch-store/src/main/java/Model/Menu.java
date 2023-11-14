@@ -3,17 +3,17 @@ package Model;
 public class Menu {
 	private int MenuID;
 	private String MenuName;
-	private String ControllerName;
-	private String ActionName;
-	private int ParentID;
+
+	private boolean ActionName;
+
 	private int MenuOrder;
 
-	public Menu(int MenuID, String MenuName, String ControllerName, String ActionName, int ParentID, int MenuOrder) {
+	public Menu(int MenuID, String MenuName, boolean ActionName, int MenuOrder) {
 		this.MenuID = MenuID;
 		this.MenuName = MenuName;
-		this.ControllerName = ControllerName;
+
 		this.ActionName = ActionName;
-		this.ParentID = ParentID;
+
 		this.MenuOrder = MenuOrder;
 	}
 
@@ -33,29 +33,14 @@ public class Menu {
 		MenuName = menuName;
 	}
 
-	public String getControllerName() {
-		return ControllerName;
-	}
-
-	public void setControllerName(String controllerName) {
-		ControllerName = controllerName;
-	}
-
-	public String getActionName() {
+	public boolean getActionName() {
 		return ActionName;
 	}
 
-	public void setActionName(String actionName) {
+	public void setActionName(boolean actionName) {
 		ActionName = actionName;
 	}
 
-	public int getParentID() {
-		return ParentID;
-	}
-
-	public void setParentID(int parentID) {
-		ParentID = parentID;
-	}
 
 	public int getMenuOrder() {
 		return MenuOrder;
@@ -67,9 +52,8 @@ public class Menu {
 
 	@Override
 	public String toString() {
-		return "Menu [MenuID=" + MenuID + ", MenuName=" + MenuName + ", ControllerName=" + ControllerName
-				+ ", ActionName=" + ActionName + ", ParentID=" + ParentID + ", MenuOrder=" + MenuOrder + "]";
+		return "Menu [MenuID=" + MenuID + ", MenuName=" + MenuName + ", ActionName=" + ActionName + ", MenuOrder="
+				+ MenuOrder + "]";
 	}
-
 
 }

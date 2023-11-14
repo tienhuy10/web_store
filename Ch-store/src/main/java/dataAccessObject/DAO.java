@@ -20,14 +20,13 @@ public class DAO {
 	// Lấy danh sách dữ liệu bảng Menu
 	public List<Menu> getAllMenus() {
 		List<Menu> listMenu = new ArrayList<>();
-		String query = "select * from menu";
+		String query = "select * from menu where actionname = 1";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listMenu.add(new Menu(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getInt(5),
-						rs.getInt(6)));
+				listMenu.add(new Menu(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getInt(4)));
 			}
 		} catch (Exception e) {
 		}
@@ -67,7 +66,7 @@ public class DAO {
 		}
 		return listProducts;
 	}
-	
+
 	// lấy danh sách dữ liệu sản phẩm theo category
 	public List<Products> getProductsbyCate(String id) {
 		List<Products> listProducts1 = new ArrayList<>();
@@ -86,7 +85,7 @@ public class DAO {
 		}
 		return listProducts1;
 	}
-	
+
 //	// lấy dữ liệu sản phẩm theo ID
 	public Products getProductsbyID(String id) {
 		String query = "select*from Products where id = ?";
@@ -96,8 +95,8 @@ public class DAO {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7)));
+				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+						rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -120,7 +119,7 @@ public class DAO {
 		}
 		return listCategories;
 	}
-	
+
 //	// lấy dữ liệu sản phẩm người dùng tìm kiếm
 	public List<Products> searchByName(String txtSeach) {
 		List<Products> searchProducts = new ArrayList<>();
@@ -139,8 +138,6 @@ public class DAO {
 		}
 		return searchProducts;
 	}
-	
-	
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -150,7 +147,6 @@ public class DAO {
 		List<Products> listProducts = dataLoad.getAllProducts();
 		List<Category> listCategories = dataLoad.getAllCategories();
 		List<Products> searchProducts = dataLoad.searchByName("a");
-
 
 	}
 
