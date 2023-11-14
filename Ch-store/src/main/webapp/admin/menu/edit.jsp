@@ -58,12 +58,19 @@
 			<div class="row pb-2">
 				<h2>Sửa menu</h2>
 			</div>
-			<form method="post" action="">
+			<form method="post" action="loadMenu">
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>MenuName</label> <input value="${listM.menuName}" name="menuName" type="text"
-							class="form-control mb-3" placeholder="Nhập tên menu" /> <span
-							class="alert-danger"></span>
+						<label>MenuID</label> <input value="${listM.menuID}"
+							name="menuID" type="text" class="form-control mb-3"
+							readonly /> <span class="alert-danger"></span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>MenuName</label> <input value="${listM.menuName}"
+							name="menuName" type="text" class="form-control mb-3"
+							placeholder="Nhập tên menu" /> <span class="alert-danger"></span>
 					</div>
 				</div>
 				<div class="form-row">

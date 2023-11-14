@@ -227,7 +227,7 @@
 		<li class="nav-item"><a class="nav-link collapsed" href="<c:url value = "/admin-menu" />">
 				<i class="bi bi-displayport"></i> <span>Quản lý Menu</span>
 		</a></li>
-		<li class="nav-item"><a class="nav-link collapsed" href="#">
+		<li class="nav-item"><a class="nav-link collapsed" href="<c:url value = "/admin-products" />">
 				<i class="bi bi-menu-button-wide"></i> <span>Quản lý sản phẩm</span>
 		</a></li>
 		<!-- End Dashboard Nav -->

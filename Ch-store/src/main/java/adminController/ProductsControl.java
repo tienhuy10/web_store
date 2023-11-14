@@ -9,20 +9,22 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Model.Menu;
+import Model.Category;
+import Model.Products;
+import dataAccessObject.DAO;
 import dataAccessObject.adminDao;
 
 /**
- * Servlet implementation class loadMenu
+ * Servlet implementation class ProductsControl
  */
-@WebServlet(name = "loadMenu", urlPatterns = { "/loadMenu" })
-public class loadMenu extends HttpServlet {
+@WebServlet(name = "admin-products", urlPatterns = { "/admin-products" })
+public class ProductsControl extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public loadMenu() {
+    public ProductsControl() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -33,15 +35,15 @@ public class loadMenu extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-
-		String menuID = request.getParameter("id");
-		adminDao dataLoad = new adminDao();
-		Menu menu = dataLoad.getMenuID(menuID);
 		
+		DAO dataLoad = new DAO(); 
+		List<Products> listProducts = dataLoad.getAllProducts();
+		List<Category> listCategories = dataLoad.getAllCategories();
 		
-		// set data lên html
-		request.setAttribute("listM", menu);
-		request.getRequestDispatcher("admin/menu/edit.jsp").forward(request, response);
+	// set data lên html
+		request.setAttribute("listProducts", listProducts);
+		request.setAttribute("listCategories", listCategories);
+		request.getRequestDispatcher("/admin/products/home.jsp").forward(request, response);
 	}
 
 	/**
@@ -49,15 +51,7 @@ public class loadMenu extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.setContentType("text/html");
-		request.setCharacterEncoding("utf-8");
-		String menuID = request.getParameter("menuID");
-		String menuN = request.getParameter("menuName");
-		String actionN = request.getParameter("actionName");
-		
-		adminDao dataLoad = new adminDao();
-		dataLoad.updatemenu(menuN, actionN, menuID);
-		response.sendRedirect("admin-menu");
+		doGet(request, response);
 	}
 
 }

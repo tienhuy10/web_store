@@ -49,11 +49,10 @@
 
 <body>
 	<%@ include file="/admin/head.jsp"%>
-
 	<main id="main" class="main">
 
 		<div class="pagetitle">
-			<h1>Quản lý menu</h1>
+			<h1>Quản lý sản phẩm</h1>
 		</div>
 		<!-- End Page Title -->
 		<section class="section">
@@ -63,35 +62,42 @@
 						<div class="card-body">
 							<h5 class="card-title"></h5>
 							<p>
-								<a href="<c:url value = "/menu-create" />" type="button" class="btn btn-success"> <i
-									class="bi bi-file-earmark me-1"></i> Thêm menu
+								<a href="<c:url value = "/product-create" />" type="button" class="btn btn-success"> <i
+									class="bi bi-file-earmark me-1"></i> Thêm sản phẩm
 								</a>
 							</p>
 							<!-- Bordered Table -->
-							<table class="table table-bordered">
+							<table
+								class=" table datatable table-striped table-bordered table-info  ">
 								<thead>
 									<tr>
-										<th scope="col">#</th>
-										<th scope="col">Menu</th>
-										<th scope="col">Hiển thị</th>
-										<th scope="col">Chức năng</th>
+										<th class="col-1 text-center">#</th>
+										<th class="col-1 text-center">Sản phẩm</th>
+										<th class="col-1 text-center">Hình Ảnh</th>
+										<th class="col-1 text-center">Giá tiền</th>
+										<th class="col-1 text-center">Thông tin</th>
+										<th class="col-1 text-center">Danh mục</th>
+										<th class="col-1 text-center">Chức năng</th>
 									</tr>
 								</thead>
 								<tbody>
-									<c:forEach items="${listM}" var="mn">
-										<tr>
-											<th scope="row">${mn.menuID}</th>
-											<td>${mn.menuName}</td>
-											<td>${mn.actionName}</td>
-											<td><a href="loadMenu?id=${mn.menuID}" class="btn btn-primary btn-sm"
-												title="Sửa menu"><i class="bi bi-pencil"></i></a> <a
-												href="delete?id=${mn.menuID}" class="btn btn-danger btn-sm"
-												title="Xóa menu"><i class="bi bi-trash"></i></a></td>
-										</tr>
+								<c:forEach items="${listProducts}" var="p">
+									<tr>
+										<td class="text-center" scope="row">${p.ID}</td>
+										<td class="text-center">${p.title}</td>
+										<td class="text-center"><img src="${p.images}" width="100%" /></td>
+										<td class="text-center">${p.price}</td>
+										<td class="text-center" scope="row">${p.description}</td>
+										<td class="text-center">${p.cateID}</td>
+										<td class="text-center"><a href="edit-product?id=${p.ID}" class="btn btn-primary btn-sm"
+											title="Sửa nội dung sản phảm"><i class="bi bi-pencil"></i></a>
+											<a href="delete-product?id=${p.ID}" class="btn btn-danger btn-sm"
+											title="Xóa sản phẩm"><i class="bi bi-trash"></i></a>
+										</td>
+									</tr>
 									</c:forEach>
 								</tbody>
 							</table>
-							<!-- End Bordered Table -->
 						</div>
 					</div>
 				</div>
@@ -100,6 +106,7 @@
 
 	</main>
 	<!-- End #main -->
+
 
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">

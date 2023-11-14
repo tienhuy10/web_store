@@ -53,7 +53,7 @@ public class DAO {
 	// lấy danh sách dữ liệu tất cả sản phẩm bảng product
 	public List<Products> getAllProducts() {
 		List<Products> listProducts = new ArrayList<>();
-		String query = "select*from Products";
+		String query = "select*from Products ORDER BY ID DESC";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);

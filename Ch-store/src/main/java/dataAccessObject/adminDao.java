@@ -112,10 +112,43 @@ public class adminDao {
 		}
 	}
 
+	// lấy danh sách dữ liệu Menu theo id
+	public Menu getMenuID(String menuID) {
+		String query = "select*from menu where MenuID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, menuID);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return (new Menu(rs.getInt(1), rs.getString(2), rs.getBoolean(3), rs.getInt(4)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	// Cập nhật Menu (Update)
+	public void updatemenu(String menuN, String actionN, String menuID) {
+		String query = "update Menu set MenuName = ?, ActionName = ? where MenuID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, menuN);
+			ps.setString(2, actionN);
+			ps.setString(3, menuID);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
+
 	// lấy danh sách dữ liệu tất cả sản phẩm bảng product
 	public List<Products> getAllProducts() {
 		List<Products> listProducts = new ArrayList<>();
-		String query = "select*from Products";
+		String query = "select*from Products order by id desc";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
@@ -128,12 +161,72 @@ public class adminDao {
 		}
 		return listProducts;
 	}
+	
+	// Xóa dữ liệu sản phẩm
+	public void deleteProduct(String id) {
+		String query = "delete from Products where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+		}
+	}
+	
+	// Thêm mới sản phẩm (insert)
+	public void insertProduct(String name, String image, String price, String info, String category) {
+		String query = "INSERT INTO Products (Title, Images, Price, Description, CateID)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?);";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.setString(2, image);
+			ps.setString(3, price);
+			ps.setString(4, info);
+			ps.setString(5, category);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
+	
+	// Cập nhật sản phẩm (Update)
+	public void editProduct(String name, String image, String price, String info, String category, String id) {
+		String query = "update Products set Title = ?, Images = ?, Price = ?, Description = ?, CateID = ? where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.setString(2, image);
+			ps.setString(3, price);
+			ps.setString(4, info);
+			ps.setString(5, category);
+			ps.setString(6, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
 
 	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
-//		adminDao dataLoad = new adminDao();
-//		Account account = dataLoad.insertMenu("liên hệ");
+		adminDao dataLoad = new adminDao();
+		dataLoad.updatemenu("cccc", "1", "20");
+		
+//		Menu menu = dataLoad.getMenuID("1");
+//		System.out.println(menu);
+		
+//		Account account = dataLoad.login("admin", "12345");
 //		System.out.println(account);
+//		List<Menu> MenuID = dataLoad.getMenuID("1");
+//		for (Menu o : MenuID) {
+//			System.out.println(o);
+//		}
 
 	}
 }

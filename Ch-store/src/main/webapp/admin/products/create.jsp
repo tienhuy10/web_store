@@ -49,57 +49,64 @@
 
 <body>
 	<%@ include file="/admin/head.jsp"%>
-
 	<main id="main" class="main">
-
 		<div class="pagetitle">
-			<h1>Quản lý menu</h1>
+			<h2>Xác nhận thêm sản phẩm</h2>
 		</div>
-		<!-- End Page Title -->
-		<section class="section">
-			<div class="row">
-				<div class="col-12">
-					<div class="card">
-						<div class="card-body">
-							<h5 class="card-title"></h5>
-							<p>
-								<a href="<c:url value = "/menu-create" />" type="button" class="btn btn-success"> <i
-									class="bi bi-file-earmark me-1"></i> Thêm menu
-								</a>
-							</p>
-							<!-- Bordered Table -->
-							<table class="table table-bordered">
-								<thead>
-									<tr>
-										<th scope="col">#</th>
-										<th scope="col">Menu</th>
-										<th scope="col">Hiển thị</th>
-										<th scope="col">Chức năng</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach items="${listM}" var="mn">
-										<tr>
-											<th scope="row">${mn.menuID}</th>
-											<td>${mn.menuName}</td>
-											<td>${mn.actionName}</td>
-											<td><a href="loadMenu?id=${mn.menuID}" class="btn btn-primary btn-sm"
-												title="Sửa menu"><i class="bi bi-pencil"></i></a> <a
-												href="delete?id=${mn.menuID}" class="btn btn-danger btn-sm"
-												title="Xóa menu"><i class="bi bi-trash"></i></a></td>
-										</tr>
-									</c:forEach>
-								</tbody>
-							</table>
-							<!-- End Bordered Table -->
-						</div>
+		<div class="container shadow p-5">
+			<div class="row pb-2">
+				<h2>Thêm mới sản phẩm</h2>
+			</div>
+			<form method="post" action="product-create">
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Tên sản phẩm</label> <input name="name" type="text"
+							class="form-control mb-3" placeholder="Nhập tên sản phẩm" /> <span
+							class="alert-danger"></span>
 					</div>
 				</div>
-			</div>
-		</section>
-
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Hình ảnh</label> 
+						<textarea name="image" class="form-control mb-3"
+							class="alert-danger" required></textarea>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Giá tiền</label> <input name="price" type="text"
+							class="form-control mb-3" placeholder="Nhập số tiền" /> <span
+							class="alert-danger"></span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Thông tin sản phẩm</label> 
+						<textarea name="info" class="form-control mb-3"
+							class="alert-danger" required></textarea>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Danh mục</label> <select name="category"
+							class="form-select">
+							<c:forEach items="${listCategories}" var="c">
+							<option value="${c.ID}">${c.name}</option>
+							</c:forEach>
+						</select>
+					</div>
+					<div class="form-group mt-5 mb-5"></div>
+				</div>
+				<button type="submit" class="btn btn-lg btn-primary p-2">
+					<i class="bi bi-file-plus-fill"></i>Lưu
+				</button>
+				<a class="btn btn-lg btn-warning p-2">Quay lại</a>
+			</form>
+		</div>
 	</main>
+
 	<!-- End #main -->
+
 
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">

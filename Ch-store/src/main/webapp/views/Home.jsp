@@ -17,7 +17,7 @@
 							style="aspect-ratio: 1/1" />
 						<div class="card-body d-flex flex-column">
 							<h5 class="card-title">${pn.title}</h5>
-							<p class="card-text">${pn.price}</p>
+							<p class="card-text">${pn.price} VND</p>
 							<div
 								class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
 								<a href="detail?id=${pn.ID}" class="btn btn-primary shadow-0 me-1">Chi tiết</a>
