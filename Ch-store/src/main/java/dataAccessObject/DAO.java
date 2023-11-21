@@ -138,6 +138,24 @@ public class DAO {
 		}
 		return searchProducts;
 	}
+	
+	//Liên hệ
+	public void insertContact(String name, String title, String phone, String address, String contents) {
+		String query = "insert into Contact ([Name], Title, Phone, Address, Contents) values (?,?,?,?,?);";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.setString(2, title);
+			ps.setString(3, phone);
+			ps.setString(4, address);
+			ps.setString(5, contents);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

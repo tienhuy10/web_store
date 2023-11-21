@@ -74,8 +74,10 @@
 								<div class="card-body">
 
 									<div class="pt-4 pb-2">
-										<h5 class="card-title text-center pb-0 fs-4">Đăng kí tài khoản</h5>
-										<p class="text-center small">Nhập thông tin cá nhân của bạn để tạo tài khoản</p>
+										<h5 class="card-title text-center pb-0 fs-4">Đăng kí tài
+											khoản</h5>
+										<p class="text-center small">Nhập thông tin cá nhân của
+											bạn để tạo tài khoản</p>
 									</div>
 
 									<form class="row g-3 needs-validation" novalidate
@@ -84,8 +86,14 @@
 											<p class="text-danger text-center">${messe}</p>
 										</div>
 										<div class="col-12">
-											<label for="yourEmail" class="form-label">Email</label>
-											<input type="email" name="email" class="form-control"
+											<label class="form-label">Họ và tên</label> <input
+												type="text" name="fullname" class="form-control" required>
+											<div class="invalid-feedback">Please enter a valid
+												fullname!</div>
+										</div>
+										<div class="col-12">
+											<label for="yourEmail" class="form-label">Email</label> <input
+												type="email" name="email" class="form-control"
 												id="yourEmail" required>
 											<div class="invalid-feedback">Please enter a valid
 												Email adddress!</div>
@@ -93,7 +101,8 @@
 
 
 										<div class="col-12">
-											<label for="yourUsername" class="form-label">Tên đăng nhập</label>
+											<label for="yourUsername" class="form-label">Tên đăng
+												nhập</label>
 											<div class="input-group has-validation">
 												<span class="input-group-text" id="inputGroupPrepend">@</span>
 												<input type="text" name="username" class="form-control"
@@ -111,9 +120,9 @@
 												password!</div>
 										</div>
 										<div class="col-12">
-											<label for="yourPassword" class="form-label">Nhập lại mật khẩu</label>
-											<input type="password" name="repass" class="form-control"
-												id="yourPassword" required>
+											<label for="yourPassword" class="form-label">Nhập lại
+												mật khẩu</label> <input type="password" name="repass"
+												class="form-control" id="yourPassword" required>
 											<div class="invalid-feedback">Please enter your
 												password!</div>
 										</div>
@@ -122,7 +131,8 @@
 											<div class="form-check">
 												<input class="form-check-input" name="terms" type="checkbox"
 													value="" id="acceptTerms" required> <label
-													class="form-check-label" for="acceptTerms">Tôi đồng ý và chấp nhận các <a href="#">điều khoản</a>
+													class="form-check-label" for="acceptTerms">Tôi đồng
+													ý và chấp nhận các <a href="#">điều khoản</a>
 												</label>
 												<div class="invalid-feedback">You must agree before
 													submitting.</div>
@@ -134,7 +144,8 @@
 										</div>
 										<div class="col-12">
 											<p class="small mb-0">
-												Bạn đã có tài khoản? <a href="pages-login.html">Đăng nhập</a>
+												Bạn đã có tài khoản? <a href="pages-login.html">Đăng
+													nhập</a>
 											</p>
 										</div>
 									</form>

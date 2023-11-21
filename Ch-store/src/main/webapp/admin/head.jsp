@@ -32,14 +32,12 @@
 			<li class="nav-item dropdown"><a class="nav-link nav-icon"
 				href="#" data-bs-toggle="dropdown"> <i class="bi bi-bell"></i> <span
 					class="badge bg-primary badge-number">4</span>
-			</a>
-			<!-- End Notification Icon -->
+			</a> <!-- End Notification Icon -->
 
 				<ul
 					class="dropdown-menu dropdown-menu-end dropdown-menu-arrow notifications">
 					<li class="dropdown-header">You have 4 new notifications <a
-						href="#"><span
-							class="badge rounded-pill bg-primary p-2 ms-2">View
+						href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View
 								all</span></a>
 					</li>
 					<li>
@@ -102,14 +100,12 @@
 				href="#" data-bs-toggle="dropdown"> <i
 					class="bi bi-chat-left-text"></i> <span
 					class="badge bg-success badge-number">3</span>
-			</a>
-			<!-- End Messages Icon -->
+			</a> <!-- End Messages Icon -->
 
 				<ul
 					class="dropdown-menu dropdown-menu-end dropdown-menu-arrow messages">
 					<li class="dropdown-header">You have 3 new messages <a
-						href="#"><span
-							class="badge rounded-pill bg-primary p-2 ms-2">View
+						href="#"><span class="badge rounded-pill bg-primary p-2 ms-2">View
 								all</span></a>
 					</li>
 					<li>
@@ -168,10 +164,8 @@
 				data-bs-toggle="dropdown"> <img
 					src="admin/assets/img/profile-img.jpg" alt="Profile"
 					class="rounded-circle" /> <span
-					class="d-none d-md-block dropdown-toggle ps-2">K.
-						Anderson</span>
-			</a>
-			<!-- End Profile Iamge Icon -->
+					class="d-none d-md-block dropdown-toggle ps-2">K. Anderson</span>
+			</a> <!-- End Profile Iamge Icon -->
 
 				<ul
 					class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
@@ -183,24 +177,24 @@
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="users-profile.html"> <i
-							class="bi bi-person"></i> <span>My Profile</span>
+						href="users-profile.html"> <i class="bi bi-person"></i> <span>My
+								Profile</span>
 					</a></li>
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="users-profile.html"> <i
-							class="bi bi-gear"></i> <span>Account Settings</span>
+						href="users-profile.html"> <i class="bi bi-gear"></i> <span>Account
+								Settings</span>
 					</a></li>
 					<li>
 						<hr class="dropdown-divider" />
 					</li>
 
 					<li><a class="dropdown-item d-flex align-items-center"
-						href="pages-faq.html"> <i
-							class="bi bi-question-circle"></i> <span>Need Help?</span>
+						href="pages-faq.html"> <i class="bi bi-question-circle"></i> <span>Need
+								Help?</span>
 					</a></li>
 					<li>
 						<hr class="dropdown-divider" />
@@ -224,11 +218,25 @@
 		<li class="nav-item"><a class="nav-link" href="index.html"> <i
 				class="bi bi-grid"></i> <span>Bảng điều khiển</span>
 		</a></li>
-		<li class="nav-item"><a class="nav-link collapsed" href="<c:url value = "/admin-menu" />">
-				<i class="bi bi-displayport"></i> <span>Quản lý Menu</span>
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-menu" />"> <i
+				class="bi bi-displayport"></i> <span>Quản lý Menu</span>
 		</a></li>
-		<li class="nav-item"><a class="nav-link collapsed" href="<c:url value = "/admin-products" />">
-				<i class="bi bi-menu-button-wide"></i> <span>Quản lý sản phẩm</span>
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-products" />"> <i
+				class="bi bi-menu-button-wide"></i> <span>Quản lý sản phẩm</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-category" />"> <i
+				class="bi bi-menu-button-wide"></i> <span>Quản lý danh mục</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-account" />"> <i
+				class="bi bi-person-lines-fill"></i> <span>Quản lý tài khoản</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-contact" />"> <i
+				class="bi bi-envelope"></i> <span>Quản lý liên hệ</span>
 		</a></li>
 		<!-- End Dashboard Nav -->
 
@@ -284,8 +292,8 @@
 		<!-- End Components Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#">
-				<i class="bi bi-journal-text"></i><span>Forms</span><i
+			data-bs-target="#forms-nav" data-bs-toggle="collapse" href="#"> <i
+				class="bi bi-journal-text"></i><span>Forms</span><i
 				class="bi bi-chevron-down ms-auto"></i>
 		</a>
 			<ul id="forms-nav" class="nav-content collapse"
@@ -339,8 +347,8 @@
 		<!-- End Charts Nav -->
 
 		<li class="nav-item"><a class="nav-link collapsed"
-			data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#">
-				<i class="bi bi-gem"></i><span>Icons</span><i
+			data-bs-target="#icons-nav" data-bs-toggle="collapse" href="#"> <i
+				class="bi bi-gem"></i><span>Icons</span><i
 				class="bi bi-chevron-down ms-auto"></i>
 		</a>
 			<ul id="icons-nav" class="nav-content collapse"

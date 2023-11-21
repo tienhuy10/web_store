@@ -48,7 +48,9 @@ public class MenuControl extends HttpServlet {
             response.sendRedirect(request.getContextPath() + "/Home");
         } else if ("2".equals(menuID)) { // Nếu menuID là 2, chuyển hướng đến trang Products.jsp
             response.sendRedirect(request.getContextPath() + "/Products");
-        } else {
+        } else if ("18".equals(menuID)) { // Nếu menuID là 2, chuyển hướng đến trang Products.jsp
+            response.sendRedirect(request.getContextPath() + "/Contact");
+        }else {
             // Nếu menuID không khớp với bất kỳ giá trị nào được xác định, chuyển hướng đến trang lỗi
             response.sendRedirect(request.getContextPath() + "/error.jsp");
         }

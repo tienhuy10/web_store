@@ -8,6 +8,8 @@ import java.util.List;
 
 import DataConnect.DBConnection;
 import Model.Account;
+import Model.Category;
+import Model.Contact;
 import Model.Menu;
 import Model.Products;
 
@@ -26,7 +28,8 @@ public class adminDao {
 			ps.setString(2, password);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7));
 			}
 
 		} catch (Exception e) {
@@ -44,7 +47,8 @@ public class adminDao {
 			ps.setString(1, username);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5));
+				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7));
 			}
 
 		} catch (Exception e) {
@@ -54,18 +58,86 @@ public class adminDao {
 	}
 
 	// Đăng kí tài khoản (insert)
-	public void signup(String username, String password) {
-		String query = "insert into Account values (?, ? ,0,0)";
+	public void signup(String username, String password, String email, String fullname) {
+		String query = "insert into Account values (?, ?,0,0,?,?)";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
 			ps.setString(1, username);
 			ps.setString(2, password);
+			ps.setString(3, email);
+			ps.setString(4, fullname);
 			ps.executeUpdate();
 
 		} catch (Exception e) {
 
 		}
+	}
+
+	// Lấy danh sách dữ liệu tài khoản
+	public List<Account> getAllAccounts() {
+		List<Account> listAcc = new ArrayList<>();
+		String query = "select*from Account";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listAcc.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7)));
+			}
+		} catch (Exception e) {
+		}
+		return listAcc;
+	}
+
+	// Xóa tài khoản
+	public void deleteAccont(String id) {
+		String query = "delete from Account where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+		}
+	}
+
+	// Cập nhật tài khoản
+	public void editAccount(String username, String password, String email, String fullname, String id) {
+		String query = "update Account set username = ?, password = ?, email=?, fullname=? where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, username);
+			ps.setString(2, password);
+			ps.setString(3, email);
+			ps.setString(4, fullname);
+			ps.setString(5, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
+
+	// lấy danh sách dữ liệu account theo id
+	public Account getAccountID(String id) {
+		String query = "select*from account where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return (new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
+						rs.getString(6), rs.getString(7)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
 	}
 
 	// Thêm mới Menu (insert)
@@ -128,7 +200,7 @@ public class adminDao {
 		}
 		return null;
 	}
-	
+
 	// Cập nhật Menu (Update)
 	public void updatemenu(String menuN, String actionN, String menuID) {
 		String query = "update Menu set MenuName = ?, ActionName = ? where MenuID = ?";
@@ -161,7 +233,7 @@ public class adminDao {
 		}
 		return listProducts;
 	}
-	
+
 	// Xóa dữ liệu sản phẩm
 	public void deleteProduct(String id) {
 		String query = "delete from Products where ID = ?";
@@ -174,7 +246,7 @@ public class adminDao {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	// Thêm mới sản phẩm (insert)
 	public void insertProduct(String name, String image, String price, String info, String category) {
 		String query = "INSERT INTO Products (Title, Images, Price, Description, CateID)\r\n"
@@ -193,7 +265,7 @@ public class adminDao {
 
 		}
 	}
-	
+
 	// Cập nhật sản phẩm (Update)
 	public void editProduct(String name, String image, String price, String info, String category, String id) {
 		String query = "update Products set Title = ?, Images = ?, Price = ?, Description = ?, CateID = ? where ID = ?";
@@ -213,18 +285,125 @@ public class adminDao {
 		}
 	}
 
+	// Xem thông tin liên hệ
+	// lấy danh sách dữ liệu liên hệ
+	public List<Contact> getAllContacts() {
+		List<Contact> listContacts = new ArrayList<>();
+		String query = "select*from Contact order by id desc";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listContacts.add(new Contact(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6)));
+			}
+		} catch (Exception e) {
+		}
+		return listContacts;
+	}
+
+	// Xóa dữ liệu liên hệ
+	public void deleteContact(String id) {
+		String query = "delete from Contact where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+		}
+	}
+
+	// lấy danh sách dữ liệu danh mục
+	public List<Category> getAllCategory() {
+		List<Category> listCtg = new ArrayList<>();
+		String query = "select * from Categories";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listCtg.add(new Category(rs.getInt(1), rs.getString(2)));
+			}
+		} catch (Exception e) {
+		}
+		return listCtg;
+	}
+
+	//Thêm mới danh mục
+	public void insertCategory(String name) {
+		String query = "insert into Categories (Name) values (?)";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
+	
+	// Xóa dữ liệu danh mục
+	public void deleteCategory(String id) {
+		String query = "delete from Categories where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+		}
+	}
+	
+	// lấy danh sách dữ liệu danh mục theo id
+	public Category getCateID(String ID) {
+		String query = "select*from Categories where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, ID);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				return (new Category(rs.getInt(1), rs.getString(2)));
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	//Chỉnh sửa danh mục
+	public void editCategory(String name, String id) {
+		String query = "update Categories set Name = ? where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, name);
+			ps.setString(2, id);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
+
 	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
 		adminDao dataLoad = new adminDao();
-		dataLoad.updatemenu("cccc", "1", "20");
-		
-//		Menu menu = dataLoad.getMenuID("1");
-//		System.out.println(menu);
-		
+//		dataLoad.updatemenu("cccc", "1", "20");
+
+		Category menu = dataLoad.getCateID("1");
+		System.out.println(menu);
+
 //		Account account = dataLoad.login("admin", "12345");
 //		System.out.println(account);
-//		List<Menu> MenuID = dataLoad.getMenuID("1");
-//		for (Menu o : MenuID) {
+
+//		List<Category> lisCategories = dataLoad.getAllCategory();
+//		for (Category o : lisCategories) {
 //			System.out.println(o);
 //		}
 

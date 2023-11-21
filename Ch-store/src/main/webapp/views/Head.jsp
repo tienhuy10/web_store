@@ -22,17 +22,17 @@
 						<a href="<c:url value = "/login" />"
 							class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"
 							target=""> <i class="fas fa-user-alt m-1 me-md-2"></i>
-							<p class="d-none d-md-block mb-0">Sign in</p>
+							<p class="d-none d-md-block mb-0">Đăng nhập</p>
 						</a> <a
 							href="https://github.com/mdbootstrap/bootstrap-material-design"
 							class="me-1 border rounded py-1 px-3 nav-link d-flex align-items-center"
 							target="_blank"> <i class="fas fa-heart m-1 me-md-2"></i>
-							<p class="d-none d-md-block mb-0">Wishlist</p>
+							<p class="d-none d-md-block mb-0">Yêu thích</p>
 						</a> <a
-							href="https://github.com/mdbootstrap/bootstrap-material-design"
+							href="<c:url value = "cart" />"
 							class="border rounded py-1 px-3 nav-link d-flex align-items-center"
-							target="_blank"> <i class="fas fa-shopping-cart m-1 me-md-2"></i>
-							<p class="d-none d-md-block mb-0">My cart</p>
+							target=""> <i class="fas fa-shopping-cart m-1 me-md-2"></i>
+							<p class="d-none d-md-block mb-0">Giỏ hàng</p>
 						</a>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 					<div class="input-group float-center">
 						<div class="form-outline">
 							<input value="${txtS}" type="text" name="txt" id="form1" class="form-control" /> <label
-								class="form-label" for="form1">Search</label>
+								class="form-label" for="form1">Tìm kiếm</label>
 						</div>
 						<button type="submit" class="btn btn-primary shadow-0">
 							<i class="fas fa-search"></i>
