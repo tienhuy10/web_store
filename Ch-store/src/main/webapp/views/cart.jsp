@@ -82,7 +82,7 @@
 										</div>
 										<div class="">
 											<text class="h6">${item.product.price * item.quantity }
-											đồng</text>
+											VND</text>
 											<br /> <small class="text-muted text-nowrap">
 												${item.product.price} /cái </small>
 										</div>

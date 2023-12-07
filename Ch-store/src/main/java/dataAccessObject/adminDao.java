@@ -12,6 +12,7 @@ import Model.Category;
 import Model.Contact;
 import Model.Menu;
 import Model.Products;
+import Model.Order;
 
 public class adminDao {
 	Connection conn = null; // Kết nối SQL
@@ -332,7 +333,7 @@ public class adminDao {
 		return listCtg;
 	}
 
-	//Thêm mới danh mục
+	// Thêm mới danh mục
 	public void insertCategory(String name) {
 		String query = "insert into Categories (Name) values (?)";
 		try {
@@ -345,7 +346,7 @@ public class adminDao {
 
 		}
 	}
-	
+
 	// Xóa dữ liệu danh mục
 	public void deleteCategory(String id) {
 		String query = "delete from Categories where ID = ?";
@@ -358,7 +359,7 @@ public class adminDao {
 		} catch (Exception e) {
 		}
 	}
-	
+
 	// lấy danh sách dữ liệu danh mục theo id
 	public Category getCateID(String ID) {
 		String query = "select*from Categories where ID = ?";
@@ -375,8 +376,8 @@ public class adminDao {
 		}
 		return null;
 	}
-	
-	//Chỉnh sửa danh mục
+
+	// Chỉnh sửa danh mục
 	public void editCategory(String name, String id) {
 		String query = "update Categories set Name = ? where ID = ?";
 		try {
@@ -391,21 +392,49 @@ public class adminDao {
 		}
 	}
 
+	public List<Order> getAllOrder() {
+		List<Order> listOrder = new ArrayList<>();
+		String query = "SELECT * FROM [Order]";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				listOrder.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4), rs.getString(5),
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+			}
+		} catch (Exception e) {
+		}
+		return listOrder;
+	}
+
+	// Xóa dữ liệu cart
+	public void deleteCart(String id) {
+		String query = "delete from [Order] where ID = ?";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, id);
+			ps.executeUpdate();
+		} catch (Exception e) {
+		}
+	}
+
 	public static void main(String[] args) {
 //		// TODO Auto-generated method stub
 		adminDao dataLoad = new adminDao();
 //		dataLoad.updatemenu("cccc", "1", "20");
 
-		Category menu = dataLoad.getCateID("1");
-		System.out.println(menu);
+//		Category menu = dataLoad.getCateID("1");
+//		System.out.println(menu);
 
 //		Account account = dataLoad.login("admin", "12345");
 //		System.out.println(account);
 
-//		List<Category> lisCategories = dataLoad.getAllCategory();
-//		for (Category o : lisCategories) {
-//			System.out.println(o);
-//		}
+		List<Order> listOrder = dataLoad.getAllOrder();
+		for (Order o : listOrder) {
+			System.out.println(o);
+		}
 
 	}
 }

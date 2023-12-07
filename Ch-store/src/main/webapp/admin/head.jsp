@@ -231,6 +231,10 @@
 				class="bi bi-menu-button-wide"></i> <span>Quản lý danh mục</span>
 		</a></li>
 		<li class="nav-item"><a class="nav-link collapsed"
+			href="<c:url value = "/admin-cart" />"> <i class="bi bi-envelope"></i>
+				<span>Quản lý Đơn Hàng</span>
+		</a></li>
+		<li class="nav-item"><a class="nav-link collapsed"
 			href="<c:url value = "/admin-account" />"> <i
 				class="bi bi-person-lines-fill"></i> <span>Quản lý tài khoản</span>
 		</a></li>

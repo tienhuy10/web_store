@@ -157,9 +157,9 @@
 								</div>
 							</div>
 						</div>
-						<a href="#" class="btn btn-warning shadow-0"> Buy now </a> <a
+						<a href="buy?id=${products.ID }" class="btn btn-warning shadow-0"> Mua Ngay </a> <a
 							href="#" class="btn btn-primary shadow-0"> <i
-							class="me-1 fa fa-shopping-basket"></i> Add to cart
+							class="me-1 fa fa-shopping-basket"></i> Thêm giỏ hàng
 						</a> <a href="#"
 							class="btn btn-light border border-secondary py-2 icon-hover px-3">
 							<i class="me-1 fa fa-heart fa-lg"></i> Save

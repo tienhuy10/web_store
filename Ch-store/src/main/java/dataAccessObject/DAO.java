@@ -139,8 +139,8 @@ public class DAO {
 		}
 		return searchProducts;
 	}
-	
-	//Liên hệ
+
+	// Liên hệ
 	public void insertContact(String name, String title, String phone, String address, String contents) {
 		String query = "insert into Contact ([Name], Title, Phone, Address, Contents) values (?,?,?,?,?);";
 		try {
@@ -157,7 +157,7 @@ public class DAO {
 
 		}
 	}
-	
+
 	// Danh sách giỏ hàng
 //    public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
 //        List<Cart> products = new ArrayList<>();
@@ -187,6 +187,28 @@ public class DAO {
 //        }
 //        return products;
 //    }
+
+	// order sản phẩm
+	public void order(String IDProduct, String Price, String UserName, String Phone, String Email,
+			String Address, String Contents) {
+		String query = "INSERT INTO [Order] (IDProduct, Price, UserName, Phone, Email, Address, Contents)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			ps.setString(1, IDProduct);
+			ps.setString(2, Price);
+			ps.setString(3, UserName);
+			ps.setString(4, Phone);
+			ps.setString(5, Email);
+			ps.setString(6, Address);
+			ps.setString(7, Contents);
+			ps.executeUpdate();
+
+		} catch (Exception e) {
+
+		}
+	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
