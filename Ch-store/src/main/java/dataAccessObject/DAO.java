@@ -3,6 +3,7 @@ package dataAccessObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,7 +44,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProNew.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
 		}
@@ -60,7 +61,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
 		}
@@ -78,7 +79,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProducts1.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -95,7 +96,7 @@ public class DAO {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5),
+				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
 						rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
@@ -131,7 +132,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				searchProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getString(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -156,6 +157,36 @@ public class DAO {
 
 		}
 	}
+	
+	// Danh sách giỏ hàng
+//    public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
+//        List<Cart> products = new ArrayList<>();
+//        try {
+//            if (cartList.size() > 0) {
+//                for (Cart item : cartList) {
+//                    String query = "select * from products where id=?";
+//                    ps = this.conn.prepareStatement(query);
+//                    ps.setInt(1, item.getID());
+//                    rs = ps.executeQuery();
+//                    while (rs.next()) {
+//                        Cart row = new Cart();
+//                        row.setID(rs.getInt("id"));
+//                        row.setTitle("name");
+//                        row.setDescription("category");
+//                        row.setPrice(rs.getDouble("price")*item.getQuantity());
+//                        row.setQuantity(item.getQuantity());
+//                        products.add(row);
+//                    }
+//
+//                }
+//            }
+//
+//        } catch (SQLException e) {
+//            e.printStackTrace();
+//            System.out.println(e.getMessage());
+//        }
+//        return products;
+//    }
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

@@ -11,7 +11,7 @@ public class Products {
 	private String Name;
 	private String Title;
 	private String Images;
-	private String Price;
+	private Double Price;
 	private String Description;
 	private int CateID;
 
@@ -47,11 +47,11 @@ public class Products {
 		Images = images;
 	}
 
-	public String getPrice() {
+	public Double getPrice() {
 		return Price;
 	}
 
-	public void setPrice(String price) {
+	public void setPrice(Double price) {
 		Price = price;
 	}
 
@@ -70,8 +70,11 @@ public class Products {
 	public void setCateID(int cateID) {
 		CateID = cateID;
 	}
+	public Products() {
+		
+	}
 
-	public Products(int id, String name, String title, String images, String price, String description,
+	public Products(int id, String name, String title, String images, Double price, String description,
 			int cateID) {
 		this.ID = id;
 		this.Name = name;

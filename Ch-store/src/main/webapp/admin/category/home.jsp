@@ -84,7 +84,7 @@
 
 											<td><a href="edit-category?id=${mn.ID}" class="btn btn-primary btn-sm"
 												title="Sửa danh mục"><i class="bi bi-pencil"></i></a> <a
-												href="delete-category?id=${mn.ID}" class="btn btn-danger btn-sm"
+												href="delete-category?id=${mn.ID}" onclick="return confirm('Xác nhận xóa?')" class="btn btn-danger btn-sm"
 												title="Xóa danh mục"><i class="bi bi-trash"></i></a></td>
 										</tr>
 									</c:forEach>

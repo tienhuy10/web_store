@@ -91,7 +91,7 @@
 										<td class="text-center">${p.cateID}</td>
 										<td class="text-center"><a href="edit-product?id=${p.ID}" class="btn btn-primary btn-sm"
 											title="Sửa nội dung sản phảm"><i class="bi bi-pencil"></i></a>
-											<a href="delete-product?id=${p.ID}" class="btn btn-danger btn-sm"
+											<a href="delete-product?id=${p.ID}" onclick="return confirm('Xác nhận xóa?')" class="btn btn-danger btn-sm"
 											title="Xóa sản phẩm"><i class="bi bi-trash"></i></a>
 										</td>
 									</tr>

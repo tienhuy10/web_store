@@ -89,7 +89,7 @@
 											<td>${acc.fullname}</td>
 											<td><a href="edit-account?id=${acc.ID}" class="btn btn-primary btn-sm"
 												title="Sửa tài khoản"><i class="bi bi-pencil"></i></a> <a
-												href="delete-account?id=${acc.ID}" class="btn btn-danger btn-sm"
+												href="delete-account?id=${acc.ID}" onclick="return confirm('Xác nhận xóa?')" class="btn btn-danger btn-sm"
 												title="Xóa tài khoản"><i class="bi bi-trash"></i></a></td>
 										</tr>
 									</c:forEach>

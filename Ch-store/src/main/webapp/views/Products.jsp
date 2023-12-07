@@ -315,7 +315,7 @@
 										<div
 											class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
 											<a class="btn btn-primary shadow-0 me-1" href="detail?id=${p.ID}">Chi tiết</a> 
-											<a href="#!" class="btn btn-light border px-3 py-2 icon-hover me-1">
+											<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${p.ID }" class="btn btn-light border px-3 py-2 icon-hover me-1">
 												<i class="fas fa-shopping-cart"></i></a> 
 											<a href="#!" class="btn btn-light border px-3 py-2 icon-hover"> 
 												<i class="fas fa-heart fa-lg text-secondary"></i></a>

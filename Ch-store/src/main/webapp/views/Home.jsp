@@ -22,9 +22,9 @@
 								class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
 								<a href="detail?id=${pn.ID}" class="btn btn-primary shadow-0 me-1">Chi tiết</a>
 
-								<a href="cart?addcart&&id=${pn.ID}"
+								<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${pn.ID }"
 									class="btn btn-light border px-3 py-2 icon-hover me-1"><i
-									class="fas fa-shopping-cart"></i></a> <a href="#!"
+									class="fas fa-shopping-cart"></i></a> <a href="${pageContext.request.contextPath }/cart?&action=buy&id=${pn.ID }"
 									class="btn btn-light border px-3 py-2 icon-hover"> <i
 									class="fas fa-heart fa-lg text-secondary"></i>
 								</a>

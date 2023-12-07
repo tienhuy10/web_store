@@ -85,7 +85,7 @@
 											<td>${mn.actionName}</td>
 											<td><a href="loadMenu?id=${mn.menuID}" class="btn btn-primary btn-sm"
 												title="Sửa menu"><i class="bi bi-pencil"></i></a> <a
-												href="delete?id=${mn.menuID}" class="btn btn-danger btn-sm"
+												href="delete?id=${mn.menuID}" onclick="return confirm('Xác nhận xóa?')" class="btn btn-danger btn-sm"
 												title="Xóa menu"><i class="bi bi-trash"></i></a></td>
 										</tr>
 									</c:forEach>
