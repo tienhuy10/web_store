@@ -6,6 +6,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Model.Account;
 import dataAccessObject.adminDao;
@@ -39,8 +40,10 @@ public class LoginControl extends HttpServlet {
 			request.setAttribute("mess", "Tên đăng nhập hoặc mật khẩu sai!");
 			request.getRequestDispatcher("/admin/login.jsp").forward(request, response);
 		} else {
-			
-			response.sendRedirect(request.getContextPath() + "/home-admin");
+			HttpSession session = request.getSession();
+			request.getSession().setAttribute("acc", account);
+			session.setAttribute("acc", account);			session.setMaxInactiveInterval(60*60*24);
+			response.sendRedirect(request.getContextPath() + "/Home");
 		}
 	} 
 

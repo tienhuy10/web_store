@@ -1,5 +1,21 @@
+<%@page import="DataConnect.DBConnection"%>
+<%@page import="dataAccessObject.DAO"%>
+<%@page import="java.util.*"%>
+<%@page import="Model.Item"%>
+<%@page import="Model.Products"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="Model.Cart"%>
+
+
+<%
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+if (cart_list != null) {
+    request.setAttribute("cart_list", cart_list);
+}
+%>
 <!DOCTYPE html>
 <html lang="en">
 

@@ -30,7 +30,7 @@ public class adminDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7));
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 			}
 
 		} catch (Exception e) {
@@ -49,7 +49,7 @@ public class adminDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				return new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7));
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9));
 			}
 
 		} catch (Exception e) {
@@ -59,8 +59,8 @@ public class adminDao {
 	}
 
 	// Đăng kí tài khoản (insert)
-	public void signup(String username, String password, String email, String fullname) {
-		String query = "insert into Account values (?, ?,0,0,?,?)";
+	public void signup(String username, String password, String email, String fullname, String address, String phone) {
+		String query = "insert into Account values (?, ?,0,0,?,?,?,?)";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
@@ -68,6 +68,8 @@ public class adminDao {
 			ps.setString(2, password);
 			ps.setString(3, email);
 			ps.setString(4, fullname);
+			ps.setString(5, address);
+			ps.setString(6, phone);
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -85,7 +87,7 @@ public class adminDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listAcc.add(new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7)));
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 		} catch (Exception e) {
 		}
@@ -133,7 +135,7 @@ public class adminDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				return (new Account(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getInt(5),
-						rs.getString(6), rs.getString(7)));
+						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -228,7 +230,7 @@ public class adminDao {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 		}
@@ -249,9 +251,9 @@ public class adminDao {
 	}
 
 	// Thêm mới sản phẩm (insert)
-	public void insertProduct(String name, String image, String price, String info, String category) {
-		String query = "INSERT INTO Products (Title, Images, Price, Description, CateID)\r\n"
-				+ "VALUES (?, ?, ?, ?, ?);";
+	public void insertProduct(String name, String image, String price, String info, String category, String quantity, String capital_price) {
+		String query = "INSERT INTO Products (Title, Images, Price, Description, CateID, Quantity, capital_price)\r\n"
+				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
@@ -260,6 +262,8 @@ public class adminDao {
 			ps.setString(3, price);
 			ps.setString(4, info);
 			ps.setString(5, category);
+			ps.setString(6, quantity);
+			ps.setString(7, capital_price);
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -268,8 +272,8 @@ public class adminDao {
 	}
 
 	// Cập nhật sản phẩm (Update)
-	public void editProduct(String name, String image, String price, String info, String category, String id) {
-		String query = "update Products set Title = ?, Images = ?, Price = ?, Description = ?, CateID = ? where ID = ?";
+	public void editProduct(String name, String image, String price, String info, String category, String quantity, String capital_price, String id) {
+		String query = "update Products set Title = ?, Images = ?, Price = ?, Description = ?, CateID = ?, Quantity = ?, capital_price = ? where ID = ?";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
@@ -278,7 +282,9 @@ public class adminDao {
 			ps.setString(3, price);
 			ps.setString(4, info);
 			ps.setString(5, category);
-			ps.setString(6, id);
+			ps.setString(6, quantity);
+			ps.setString(7, capital_price);
+			ps.setString(8, id);
 			ps.executeUpdate();
 
 		} catch (Exception e) {
@@ -392,21 +398,21 @@ public class adminDao {
 		}
 	}
 
-	public List<Order> getAllOrder() {
-		List<Order> listOrder = new ArrayList<>();
-		String query = "SELECT * FROM [Order]";
-		try {
-			conn = new DBConnection().getConnection();// mo ket noi voi sql
-			ps = conn.prepareStatement(query);
-			rs = ps.executeQuery();
-			while (rs.next()) {
-				listOrder.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4), rs.getString(5),
-						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
-			}
-		} catch (Exception e) {
-		}
-		return listOrder;
-	}
+//	public List<Order> getAllOrder() {
+//		List<Order> listOrder = new ArrayList<>();
+//		String query = "SELECT * FROM [Order]";
+//		try {
+//			conn = new DBConnection().getConnection();// mo ket noi voi sql
+//			ps = conn.prepareStatement(query);
+//			rs = ps.executeQuery();
+//			while (rs.next()) {
+//				listOrder.add(new Order(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getDouble(4), rs.getString(5),
+//						rs.getString(6), rs.getString(7), rs.getString(8), rs.getString(9)));
+//			}
+//		} catch (Exception e) {
+//		}
+//		return listOrder;
+//	}
 
 	// Xóa dữ liệu cart
 	public void deleteCart(String id) {
@@ -431,10 +437,10 @@ public class adminDao {
 //		Account account = dataLoad.login("admin", "12345");
 //		System.out.println(account);
 
-		List<Order> listOrder = dataLoad.getAllOrder();
-		for (Order o : listOrder) {
-			System.out.println(o);
-		}
+//		List<Order> listOrder = dataLoad.getAllOrder();
+//		for (Order o : listOrder) {
+//			System.out.println(o);
+//		}
 
 	}
 }

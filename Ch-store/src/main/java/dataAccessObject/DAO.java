@@ -9,14 +9,24 @@ import java.util.List;
 
 import DataConnect.DBConnection;
 import Model.Account;
+import Model.Cart;
 import Model.Category;
 import Model.Menu;
 import Model.Products;
+import Model.UserOrderInfo;
 
 public class DAO {
 	Connection conn = null; // Kết nối SQL
 	PreparedStatement ps = null; // Truy vấn sql
 	ResultSet rs = null; // Nhận kết quẳ
+
+	public DAO() {
+		// Không làm gì cả trong constructor này
+	}
+
+	public void setConnection(Connection conn) {
+		this.conn = conn;
+	}
 
 	// Lấy danh sách dữ liệu bảng Menu
 	public List<Menu> getAllMenus() {
@@ -44,7 +54,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProNew.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 		}
@@ -61,7 +71,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 		}
@@ -79,7 +89,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				listProducts1.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -97,7 +107,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
-						rs.getString(6), rs.getInt(7)));
+						rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -132,7 +142,7 @@ public class DAO {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				searchProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7)));
+						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -159,56 +169,57 @@ public class DAO {
 	}
 
 	// Danh sách giỏ hàng
-//    public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
-//        List<Cart> products = new ArrayList<>();
-//        try {
-//            if (cartList.size() > 0) {
-//                for (Cart item : cartList) {
-//                    String query = "select * from products where id=?";
-//                    ps = this.conn.prepareStatement(query);
-//                    ps.setInt(1, item.getID());
-//                    rs = ps.executeQuery();
-//                    while (rs.next()) {
-//                        Cart row = new Cart();
-//                        row.setID(rs.getInt("id"));
-//                        row.setTitle("name");
-//                        row.setDescription("category");
-//                        row.setPrice(rs.getDouble("price")*item.getQuantity());
-//                        row.setQuantity(item.getQuantity());
-//                        products.add(row);
-//                    }
-//
-//                }
-//            }
-//
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//            System.out.println(e.getMessage());
-//        }
-//        return products;
-//    }
-
-	// order sản phẩm
-	public void order(String IDProduct, String Price, String UserName, String Phone, String Email,
-			String Address, String Contents) {
-		String query = "INSERT INTO [Order] (IDProduct, Price, UserName, Phone, Email, Address, Contents)\r\n"
-				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
+	public List<Cart> getCartProducts(ArrayList<Cart> cartList) {
+		List<Cart> cartProducts = new ArrayList<>();
 		try {
-			conn = new DBConnection().getConnection();// mo ket noi voi sql
-			ps = conn.prepareStatement(query);
-			ps.setString(1, IDProduct);
-			ps.setString(2, Price);
-			ps.setString(3, UserName);
-			ps.setString(4, Phone);
-			ps.setString(5, Email);
-			ps.setString(6, Address);
-			ps.setString(7, Contents);
-			ps.executeUpdate();
-
-		} catch (Exception e) {
-
+			if (cartList.size() > 0) {
+				for (Cart item : cartList) {
+					String query = "select * from products where id=?";
+					ps = conn.prepareStatement(query);
+					ps.setInt(1, item.getID());
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						Cart row = new Cart();
+						// Set các thuộc tính chung từ Products
+						row.setID(rs.getInt("id"));
+						row.setTitle(rs.getString("title"));
+						row.setImages(rs.getString("images"));
+						row.setPrice(rs.getDouble("price") * item.getQuantity());
+						row.setQuantity(item.getQuantity());
+						cartProducts.add(row);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
 		}
+		return cartProducts;
 	}
+
+	public double getTotalCartPrice(ArrayList<Cart> cartList) {
+		double sum = 0;
+		try {
+			if (cartList.size() > 0) {
+				for (Cart item : cartList) {
+					String query = "select price from products where id=?";
+					ps = conn.prepareStatement(query);
+					ps.setInt(1, item.getID());
+					rs = ps.executeQuery();
+					while (rs.next()) {
+						sum += rs.getDouble("price") * item.getQuantity();
+					}
+
+				}
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		return sum;
+	}
+
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -218,7 +229,12 @@ public class DAO {
 		List<Products> listProducts = dataLoad.getAllProducts();
 		List<Category> listCategories = dataLoad.getAllCategories();
 		List<Products> searchProducts = dataLoad.searchByName("a");
-
+		
+//		List<UserOrderInfo> userOrderList = dataLoad.UserOrderInfo();
+//		for (UserOrderInfo o : userOrderList) {
+//			System.out.println(o);
+//		}
+//
 	}
 
 }

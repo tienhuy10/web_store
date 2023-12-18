@@ -13,8 +13,7 @@
 				<div class="col-12 col-lg-3 col-sm-12 mb-2">
 					<!-- Content -->
 					<a href="https://mdbootstrap.com/" target="_blank" class=""> <img
-						src="https://mdbootstrap.com/img/logo/mdb-transaprent-noshadows.png"
-						height="35" />
+						src="images/logo2.png" height="35" />
 					</a>
 					<p class="mt-2 text-dark">© 2023 Copyright: MDBootstrap.com</p>
 				</div>

@@ -50,10 +50,8 @@ public class HomeControl extends HttpServlet {
 		request.setAttribute("listM", listMenu);
 		request.setAttribute("listProNew", listProNew);
 		request.setAttribute("products", products);
-		request.getRequestDispatcher("/index.jsp").forward(request, response);
-		
-		
+		request.getRequestDispatcher("/index.jsp").forward(request, response);	
 		
 	}
-
+	
 }

@@ -1,10 +1,12 @@
 package Model;
 
 public class Products {
+
 	@Override
 	public String toString() {
 		return "Products [ID=" + ID + ", Name=" + Name + ", Title=" + Title + ", Images=" + Images + ", Price=" + Price
-				+ ", Description=" + Description + ", CateID=" + CateID + "]";
+				+ ", Description=" + Description + ", CateID=" + CateID + ", Quantity=" + Quantity + ", capital_price="
+				+ capital_price + "]";
 	}
 
 	private int ID;
@@ -14,6 +16,28 @@ public class Products {
 	private Double Price;
 	private String Description;
 	private int CateID;
+	private int Quantity;
+	
+	private Double capital_price;
+	
+	public Double getCapital_price() {
+		return capital_price;
+	}
+
+	public void setCapital_price(Double capital_price) {
+		this.capital_price = capital_price;
+	}
+
+	public Products() {
+	}
+	
+	public int getQuantity() {
+		return Quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		Quantity = quantity;
+	}
 
 	public int getID() {
 		return ID;
@@ -70,12 +94,9 @@ public class Products {
 	public void setCateID(int cateID) {
 		CateID = cateID;
 	}
-	public Products() {
-		
-	}
 
 	public Products(int id, String name, String title, String images, Double price, String description,
-			int cateID) {
+			int cateID, int quantity, Double capital_price) {
 		this.ID = id;
 		this.Name = name;
 		this.Description = description;
@@ -83,6 +104,8 @@ public class Products {
 		this.Title = title;
 		this.CateID = cateID;
 		this.Price = price;
+		this.Quantity = quantity;
+		this.capital_price = capital_price;
 	}
 
 

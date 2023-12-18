@@ -95,8 +95,21 @@
 											<label for="yourEmail" class="form-label">Email</label> <input
 												type="email" name="email" class="form-control"
 												id="yourEmail" required>
-											<div class="invalid-feedback">Please enter a valid
-												Email adddress!</div>
+											<div class="invalid-feedback">Vùi lòng nhập địa chỉ email!</div>
+										</div>
+
+										<div class="col-12">
+											<label for="yourEmail" class="form-label">Số điện thoại</label> <input
+												type="number" name="phone" class="form-control"
+												id="phone" required>
+											<div class="invalid-feedback">Vui lòng nhập số điện thoại!</div>
+										</div>
+
+										<div class="col-12">
+											<label for="yourEmail" class="form-label">Địa chỉ</label> <input
+												type="text" name="address" class="form-control"
+												id="address" required>
+											<div class="invalid-feedback">Vui lòng nhập địa chỉ!</div>
 										</div>
 
 

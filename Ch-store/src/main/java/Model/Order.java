@@ -1,106 +1,64 @@
 package Model;
 
-public class Order {
-	private int ID;
-	private int IDProduct;
-	private int Quantity;
-	private double Price;
-	private String UserName;
-	private String Phone;
-	private String Email;
-	private String Address;
-	private String Contents;
+public class Order extends Products {
+	private int o_id;
+	private int u_id;
+	private int o_quantity;
+	private String o_date;
 
-	public Order(int ID, int IDProduct, int Quantity, double Price, String UserName, String Phone, String Email,
-			String Address, String Contents) {
-		this.ID = ID;
-		this.IDProduct = IDProduct;
-		this.Quantity = Quantity;
-		this.Price = Price;
-		this.UserName = UserName;
-		this.Phone = Phone;
-		this.Email = Email;
-		this.Address = Address;
-		this.Contents = Contents;
+	public Order() {
 	}
 
-	public int getID() {
-		return ID;
+	public Order(int orderId, int uid, int quantity, String date) {
+		super();
+		this.o_id = orderId;
+		this.u_id = uid;
+		this.o_quantity = quantity;
+		this.o_date = date;
 	}
 
-	public void setID(int iD) {
-		ID = iD;
+	public Order(int uid, int quantity, String date) {
+		super();
+		this.u_id = uid;
+		this.o_quantity = quantity;
+		this.o_date = date;
 	}
 
-	public int getIDProduct() {
-		return IDProduct;
+	public int getOrderId() {
+		return o_id;
 	}
 
-	public void setIDProduct(int iDProduct) {
-		IDProduct = iDProduct;
+	public void setOrderId(int orderId) {
+		this.o_id = orderId;
+	}
+
+	public int getUid() {
+		return u_id;
+	}
+
+	public void setUid(int uid) {
+		this.u_id = uid;
 	}
 
 	public int getQuantity() {
-		return Quantity;
+		return o_quantity;
 	}
 
 	public void setQuantity(int quantity) {
-		Quantity = quantity;
+		this.o_quantity = quantity;
 	}
 
-	public double getPrice() {
-		return Price;
+	public String getDate() {
+		return o_date;
 	}
 
-	public void setPrice(double price) {
-		Price = price;
-	}
-
-	public String getUserName() {
-		return UserName;
-	}
-
-	public void setUserName(String userName) {
-		UserName = userName;
-	}
-
-	public String getPhone() {
-		return Phone;
-	}
-
-	public void setPhone(String phone) {
-		Phone = phone;
-	}
-
-	public String getEmail() {
-		return Email;
-	}
-
-	public void setEmail(String email) {
-		Email = email;
-	}
-
-	public String getAddress() {
-		return Address;
-	}
-
-	public void setAddress(String address) {
-		Address = address;
-	}
-
-	public String getContents() {
-		return Contents;
-	}
-
-	public void setContents(String contents) {
-		Contents = contents;
+	public void setDate(String date) {
+		this.o_date = date;
 	}
 
 	@Override
 	public String toString() {
-		return "Order [ID=" + ID + ", IDProduct=" + IDProduct + ", Quantity=" + Quantity + ", Price=" + Price
-				+ ", UserName=" + UserName + ", Phone=" + Phone + ", Email=" + Email + ", Address=" + Address
-				+ ", Contents=" + Contents + "]";
+		return "Order [orderId=" + o_id + ", uid=" + u_id + ", quantity=" + o_quantity + ", date=" + o_date + "]";
 	}
 
 }

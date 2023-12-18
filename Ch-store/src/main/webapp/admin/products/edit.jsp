@@ -51,11 +51,11 @@
 	<%@ include file="/admin/head.jsp"%>
 	<main id="main" class="main">
 		<div class="pagetitle">
-			<h2>Xác nhận thêm sản phẩm</h2>
+			<h2>Xác nhận sửa sản phẩm</h2>
 		</div>
 		<div class="container shadow p-5">
 			<div class="row pb-2">
-				<h2>Thêm mới sản phẩm</h2>
+				<h2>Sửa sản phẩm</h2>
 			</div>
 			<form method="post" action="edit-product">
 				<div class="form-row">
@@ -81,7 +81,14 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Giá tiền</label> <input value="${products.price}"
+						<label>Giá nhập</label> <input value="${products.capital_price}"
+							name="capital_price" type="text" class="form-control mb-3"
+							placeholder="Nhập số tiền" /> <span class="alert-danger"></span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Giá bán</label> <input value="${products.price}"
 							name="price" type="text" class="form-control mb-3"
 							placeholder="Nhập số tiền" /> <span class="alert-danger"></span>
 					</div>
@@ -92,6 +99,15 @@
 
 						<textarea name="info" class="form-control mb-3"
 							class="alert-danger" required>${products.description}</textarea>
+					</div>
+				</div>
+
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Số lượng sản phẩm</label> <input
+							value="${products.quantity}" name="quantity" type="number"
+							class="form-control mb-3" placeholder="Nhập số lượng" /> <span
+							class="alert-danger"></span>
 					</div>
 				</div>
 				<div class="form-row">

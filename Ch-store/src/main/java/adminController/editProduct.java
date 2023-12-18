@@ -60,6 +60,7 @@ public class editProduct extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		request.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("utf-8");
 
 		String id = request.getParameter("id");
 		String name = request.getParameter("name");
@@ -67,9 +68,11 @@ public class editProduct extends HttpServlet {
 		String price = request.getParameter("price");
 		String info = request.getParameter("info");
 		String category = request.getParameter("category");
+		String quantity = request.getParameter("quantity");
+		String capital_price = request.getParameter("capital_price");
 		
 		adminDao dataLoad = new adminDao();
-		dataLoad.editProduct(name, image, price, info, category, id);
+		dataLoad.editProduct(name, image, price, info, category, quantity, capital_price, id);
 		
 		
 		response.sendRedirect("admin-products");

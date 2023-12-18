@@ -58,9 +58,11 @@ public class createProduct extends HttpServlet {
 		String price = request.getParameter("price");
 		String info = request.getParameter("info");
 		String category = request.getParameter("category");
+		String quantity = request.getParameter("quantity");
+		String capital_price = request.getParameter("capital_price");
 		
 		adminDao dataLoad = new adminDao();
-		dataLoad.insertProduct(name, image, price, info, category);
+		dataLoad.insertProduct(name, image, price, info, category, quantity, capital_price);
 		
 		
 		response.sendRedirect("admin-products");

@@ -1,5 +1,22 @@
+<%@page import="DataConnect.DBConnection"%>
+<%@page import="dataAccessObject.DAO"%>
+<%@page import="java.util.*"%>
+<%@page import="Model.Item"%>
+<%@page import="Model.Products"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@page import="java.text.DecimalFormat"%>
+<%@ page import="Model.Cart"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+
+
+<%
+ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
+
+if (cart_list != null) {
+	request.setAttribute("cart_list", cart_list);
+}
+%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -308,17 +325,23 @@
 									<img src="${p.images}" />
 									<div class="card-body d-flex flex-column">
 										<div class="d-flex flex-row">
-											<h5 class="mb-1 me-1">${p.price}</h5>
+											<h5 class="mb-1 me-1">
+												<fmt:formatNumber value="${p.price}" type="currency"
+													currencyCode="VND" maxFractionDigits="0" />
+											</h5>
 											<span class="text-danger"><s>${p.price}</s></span>
 										</div>
 										<p class="card-text">${p.title}</p>
 										<div
 											class="card-footer d-flex align-items-end pt-3 px-0 pb-0 mt-auto">
-											<a class="btn btn-primary shadow-0 me-1" href="detail?id=${p.ID}">Chi tiết</a> 
-											<a href="${pageContext.request.contextPath }/cart?&action=buy&id=${p.ID }" class="btn btn-light border px-3 py-2 icon-hover me-1">
-												<i class="fas fa-shopping-cart"></i></a> 
-											<a href="#!" class="btn btn-light border px-3 py-2 icon-hover"> 
-												<i class="fas fa-heart fa-lg text-secondary"></i></a>
+											<a class="btn btn-primary shadow-0 me-1"
+												href="detail?id=${p.ID}">Chi tiết</a> <a
+												href="add-to-cart?id=${p.ID}"
+												class="btn btn-light border px-3 py-2 icon-hover me-1">
+												<i class="fas fa-shopping-cart"></i>
+											</a> <a href="#!"
+												class="btn btn-light border px-3 py-2 icon-hover"> <i
+												class="fas fa-heart fa-lg text-secondary"></i></a>
 
 										</div>
 									</div>

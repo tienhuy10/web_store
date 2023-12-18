@@ -67,21 +67,35 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Hình ảnh</label> 
+						<label>Hình ảnh</label>
 						<textarea name="image" class="form-control mb-3"
 							class="alert-danger" required></textarea>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Giá tiền</label> <input name="price" type="text"
+						<label>Giá nhập</label> <input name="capital_price" type="text"
 							class="form-control mb-3" placeholder="Nhập số tiền" /> <span
 							class="alert-danger"></span>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Thông tin sản phẩm</label> 
+						<label>Giá bán</label> <input name="price" type="text"
+							class="form-control mb-3" placeholder="Nhập số tiền" /> <span
+							class="alert-danger"></span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Số lượng</label> <input name="quantity" type="text"
+							class="form-control mb-3" placeholder="Nhập số lượng" /> <span
+							class="alert-danger"></span>
+					</div>
+				</div>
+				<div class="form-row">
+					<div class="form-group col-md-6">
+						<label>Thông tin sản phẩm</label>
 						<textarea name="info" class="form-control mb-3"
 							class="alert-danger" required></textarea>
 					</div>
@@ -91,7 +105,7 @@
 						<label>Danh mục</label> <select name="category"
 							class="form-select">
 							<c:forEach items="${listCategories}" var="c">
-							<option value="${c.ID}">${c.name}</option>
+								<option value="${c.ID}">${c.name}</option>
 							</c:forEach>
 						</select>
 					</div>

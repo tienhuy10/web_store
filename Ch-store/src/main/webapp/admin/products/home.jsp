@@ -1,5 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.text.NumberFormat"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -62,39 +64,46 @@
 						<div class="card-body">
 							<h5 class="card-title"></h5>
 							<p>
-								<a href="<c:url value = "/product-create" />" type="button" class="btn btn-success"> <i
-									class="bi bi-file-earmark me-1"></i> Thêm sản phẩm
+								<a href="<c:url value = "/product-create" />" type="button"
+									class="btn btn-success"> <i class="bi bi-file-earmark me-1"></i>
+									Thêm sản phẩm
 								</a>
 							</p>
 							<!-- Bordered Table -->
 							<table
-								class=" table datatable table-striped table-bordered table-info  ">
+								class=" table datatable table-striped table-bordered table-info table-auto  ">
 								<thead>
 									<tr>
 										<th class="col-1 text-center">#</th>
-										<th class="col-1 text-center">Sản phẩm</th>
 										<th class="col-1 text-center">Hình Ảnh</th>
-										<th class="col-1 text-center">Giá tiền</th>
-										<th class="col-1 text-center">Thông tin</th>
-										<th class="col-1 text-center">Danh mục</th>
+										<th class="col-1 text-center">Sản phẩm</th>
+										<th class="col-2 text-center">Giá tiền</th>
+										<th class="col-1 text-center">Số lượng</th>
+										<!-- 										<th class="col-1 text-center">Danh mục</th> -->
 										<th class="col-1 text-center">Chức năng</th>
 									</tr>
 								</thead>
 								<tbody>
-								<c:forEach items="${listProducts}" var="p">
-									<tr>
-										<td class="text-center" scope="row">${p.ID}</td>
-										<td class="text-center">${p.title}</td>
-										<td class="text-center"><img src="${p.images}" width="100%" /></td>
-										<td class="text-center">${p.price}</td>
-										<td class="text-center" scope="row">${p.description}</td>
-										<td class="text-center">${p.cateID}</td>
-										<td class="text-center"><a href="edit-product?id=${p.ID}" class="btn btn-primary btn-sm"
-											title="Sửa nội dung sản phảm"><i class="bi bi-pencil"></i></a>
-											<a href="delete-product?id=${p.ID}" onclick="return confirm('Xác nhận xóa?')" class="btn btn-danger btn-sm"
-											title="Xóa sản phẩm"><i class="bi bi-trash"></i></a>
-										</td>
-									</tr>
+
+									<c:forEach items="${listProducts}" var="p">
+										<tr>
+											<td class="text-center" scope="row">${p.ID}</td>
+											<td class="text-center"><img src="${p.images}"
+												width="100%" /></td>
+											<td class="text-center">${p.title}</td>
+											<td class="text-center"><fmt:formatNumber
+													value="${p.price}" type="currency" currencyCode="VND" maxFractionDigits="0" /></td>
+											<td class="text-center" scope="row">${p.quantity}</td>
+											<td class="text-center"><a
+												href="edit-product?id=${p.ID}"
+												class="btn btn-primary btn-sm" title="Sửa nội dung sản phẩm">
+													<i class="bi bi-pencil"></i>
+											</a> <a href="delete-product?id=${p.ID}"
+												onclick="return confirm('Xác nhận xóa?')"
+												class="btn btn-danger btn-sm" title="Xóa sản phẩm"> <i
+													class="bi bi-trash"></i>
+											</a></td>
+										</tr>
 									</c:forEach>
 								</tbody>
 							</table>

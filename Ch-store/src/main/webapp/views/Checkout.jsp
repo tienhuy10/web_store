@@ -38,148 +38,159 @@
 </head>
 <body>
 
-	<%@ include file="/views/Head.jsp"%>
 
 
-	<section class="bg-light py-5">
-		<div class="container">
-			<div class="row">
-				<div class="col-xl-8 col-lg-8 mb-4">
 
-
-					<!-- Checkout -->
-					<div class="card shadow-0 border">
-						<div class="p-4">
-							<h5 class="card-title mb-3">Thông tin khách hàng</h5>
-							<div class="row">
-								<div class="col-6 mb-3">
-									<p class="mb-0">Họ và tên</p>
-									<div class="form-outline">
-										<input type="text" id="typeText" placeholder="Type here"
-											class="form-control" />
+	<section class="intro">
+		<div class="bg-image h-100" style="background-color: #6095F0;">
+			<div class="mask d-flex align-items-center h-100">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-12">
+							<div class="card shadow-2-strong"
+								style="background-color: #f5f7fa;">
+								<div class="card-body">
+									<div class="table-responsive">
+										<table class="table table-borderless mb-0">
+											<thead>
+												<tr>
+													<th scope="col">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault" />
+														</div>
+													</th>
+													<th scope="col">EMPLOYEES</th>
+													<th scope="col">POSITION</th>
+													<th scope="col">AGE</th>
+													<th scope="col">ADDRESS</th>
+													<th scope="col">Close</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault1" checked />
+														</div>
+													</th>
+													<td>Tiger Nixon</td>
+													<td>System Architect</td>
+													<td>61</td>
+													<td>Edinburgh</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault2" />
+														</div>
+													</th>
+													<td>Sonya Frost</td>
+													<td>Software Engineer</td>
+													<td>23</td>
+													<td>Edinburgh</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault3" checked />
+														</div>
+													</th>
+													<td>Jena Gaines</td>
+													<td>Office Manager</td>
+													<td>30</td>
+													<td>London</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault4" checked />
+														</div>
+													</th>
+													<td>Quinn Flynn</td>
+													<td>Support Lead</td>
+													<td>22</td>
+													<td>Edinburgh</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault5" checked />
+														</div>
+													</th>
+													<td>Charde Marshall</td>
+													<td>Regional Director</td>
+													<td>36</td>
+													<td>San Francisco</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault6" />
+														</div>
+													</th>
+													<td>Haley Kennedy</td>
+													<td>Senior Marketing Designer</td>
+													<td>43</td>
+													<td>London</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+												<tr>
+													<th scope="row">
+														<div class="form-check">
+															<input class="form-check-input" type="checkbox" value=""
+																id="flexCheckDefault7" checked />
+														</div>
+													</th>
+													<td>Tatyana Fitzpatrick</td>
+													<td>Regional Director</td>
+													<td>19</td>
+													<td>Warsaw</td>
+													<td>
+														<button type="button" class="btn btn-danger btn-sm px-3">
+															<i class="fas fa-times"></i>
+														</button>
+													</td>
+												</tr>
+											</tbody>
+										</table>
 									</div>
 								</div>
-
-								<div class="col-6 mb-3">
-									<p class="mb-0">Điện thoại</p>
-									<div class="form-outline">
-										<input type="tel" id="typePhone" value="+84 "
-											class="form-control" />
-									</div>
-								</div>
-
-								<div class="col-6">
-									<p class="mb-0">Last name</p>
-									<div class="form-outline">
-										<input type="text" id="typeText" placeholder="Type here"
-											class="form-control" />
-									</div>
-								</div>
-
-
-
-								<div class="col-6 mb-3">
-									<p class="mb-0">Email</p>
-									<div class="form-outline">
-										<input type="email" id="typeEmail"
-											placeholder="example@gmail.com" class="form-control" />
-									</div>
-								</div>
-							</div>
-
-
-
-
-							<div class="mb-3">
-								<p class="mb-0">Địa chỉ</p>
-								<div class="form-outline">
-									<textarea class="form-control" id="textAreaExample1" rows="2"></textarea>
-								</div>
-							</div>
-
-							<div class="float-end">
-								<button class="btn btn-light border">Hủy</button>
-								<button class="btn btn-success shadow-0 border">Đặt hàng</button>
-							</div>
-						</div>
-					</div>
-					<!-- Checkout -->
-				</div>
-				<div
-					class="col-xl-4 col-lg-4 d-flex justify-content-center justify-content-lg-end">
-					<div class="ms-lg-4 mt-4 mt-lg-0" style="max-width: 320px;">
-						<h6 class="mb-3">Summary</h6>
-						<div class="d-flex justify-content-between">
-							<p class="mb-2">Total price:</p>
-							<p class="mb-2">$195.90</p>
-						</div>
-						<div class="d-flex justify-content-between">
-							<p class="mb-2">Discount:</p>
-							<p class="mb-2 text-danger">- $60.00</p>
-						</div>
-						<div class="d-flex justify-content-between">
-							<p class="mb-2">Shipping cost:</p>
-							<p class="mb-2">+ $14.00</p>
-						</div>
-						<hr />
-						<div class="d-flex justify-content-between">
-							<p class="mb-2">Total price:</p>
-							<p class="mb-2 fw-bold">$149.90</p>
-						</div>
-
-						<div class="input-group mt-3 mb-4">
-							<input type="text" class="form-control border" name=""
-								placeholder="Promo code" />
-							<button class="btn btn-light text-primary border">Apply</button>
-						</div>
-
-						<hr />
-						<h6 class="text-dark my-4">Items in cart</h6>
-
-						<div class="d-flex align-items-center mb-4">
-							<div class="me-3 position-relative">
-								<span
-									class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
-									1 </span> <img
-									src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/7.webp"
-									style="height: 96px; width: 96x;" class="img-sm rounded border" />
-							</div>
-							<div class="">
-								<a href="#" class="nav-link"> Gaming Headset with Mic <br />
-									Darkblue color
-								</a>
-								<div class="price text-muted">Total: $295.99</div>
-							</div>
-						</div>
-
-						<div class="d-flex align-items-center mb-4">
-							<div class="me-3 position-relative">
-								<span
-									class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
-									1 </span> <img
-									src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/5.webp"
-									style="height: 96px; width: 96x;" class="img-sm rounded border" />
-							</div>
-							<div class="">
-								<a href="#" class="nav-link"> Apple Watch Series 4 Space <br />
-									Large size
-								</a>
-								<div class="price text-muted">Total: $217.99</div>
-							</div>
-						</div>
-
-						<div class="d-flex align-items-center mb-4">
-							<div class="me-3 position-relative">
-								<span
-									class="position-absolute top-0 start-100 translate-middle badge rounded-pill badge-secondary">
-									3 </span> <img
-									src="https://bootstrap-ecommerce.com/bootstrap5-ecommerce/images/items/1.webp"
-									style="height: 96px; width: 96x;" class="img-sm rounded border" />
-							</div>
-							<div class="">
-								<a href="#" class="nav-link">GoPro HERO6 4K Action Camera -
-									Black</a>
-								<div class="price text-muted">Total: $910.00</div>
 							</div>
 						</div>
 					</div>
@@ -188,6 +199,6 @@
 		</div>
 	</section>
 
-	<%@ include file="/views/Footer.jsp"%>
+	
 </body>
 </html>

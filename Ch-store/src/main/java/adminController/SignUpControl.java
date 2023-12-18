@@ -47,6 +47,9 @@ public class SignUpControl extends HttpServlet {
 		String repass = request.getParameter("repass");
 		String email = request.getParameter("email");
 		String fullname = request.getParameter("fullname");
+		String address = request.getParameter("address");
+		String phone = request.getParameter("phone");
+		
 		if(!password.equals(repass)) {
 			request.setAttribute("messe", "Mật khẩu không chính xác");
 			request.getRequestDispatcher("/admin/signup.jsp").forward(request, response);
@@ -55,7 +58,7 @@ public class SignUpControl extends HttpServlet {
 			adminDao dataload = new adminDao();
 			Account account = dataload.checkAccount(username);
 			if (account == null) {
-				dataload.signup(username, password, email, fullname);
+				dataload.signup(username, password, email, fullname, address, phone);
 				response.sendRedirect(request.getContextPath() + "/login");
 				
 			}else {
