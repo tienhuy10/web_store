@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -64,42 +65,114 @@
 		<!-- End Page Title -->
 
 		<section class="section dashboard">
-			<!-- Left side columns -->
 			<div class="row">
+				<div class="col-lg-12">
+					<!-- Left side columns -->
+					<div class="row">
 
-				<!-- Thống Kê Sản Phẩm -->
-				<div class="col-xxl-4 col-md-6">
-					<div class="card info-card sales-card">
-						<div class="card-body">
-							<h5 class="card-title">Thống Kê Sản Phẩm</h5>
-							<div class="d-flex align-items-center">
-								<div
-									class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-									<i class="bi bi-cart"></i>
+						<!-- Thống Kê Sản Phẩm -->
+						<div class="col-xxl-4 col-md-4">
+							<div class="card info-card sales-card">
+								<div class="card-body">
+									<h5 class="card-title">Số Lượng sản phẩm</h5>
+									<div class="d-flex align-items-center">
+										<div
+											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+											<i class="bi bi-bag-check"></i>
+										</div>
+										<div class="ps-3">
+
+											<h6 class="card-text   pt-1 ">${adminProducts}</h6>
+										</div>
+									</div>
 								</div>
-								<div class="ps-3">
-									<h6>Số Lượng Sản Phẩm</h6>
-									<h6 class="text-danger small pt-1 fw-bold">${adminProducts}</h6>
+							</div>
+						</div>
+						<!-- End Sales Card 
+
+  <!-- Thống Kê Người Dùng -->
+						<div class="col-xxl-4 col-md-4">
+							<div class="card info-card customers-card">
+								<div class="card-body">
+									<h5 class="card-title">Danh mục sản phẩm</h5>
+									<div class="d-flex align-items-center">
+										<div
+											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+											<i class="bi bi-people"></i>
+										</div>
+										<div class="ps-3">
+
+											<h6 class="card-text pt-1">${adminCount}</h6>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-xxl-4 col-md-4">
+							<div class="card info-card customers-card">
+								<div class="card-body">
+									<h5 class="card-title">Số lượng người dùng</h5>
+									<div class="d-flex align-items-center">
+										<div
+											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+											<i class="bi bi-cart"></i>
+										</div>
+										<div class="ps-3">
+
+											<h6 class="card-text pt-1">${adminCount}</h6>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-				<!-- End Sales Card 
 
-  <!-- Thống Kê Người Dùng -->
-				<div class="col-xxl-4 col-md-6">
-					<div class="card info-card customers-card">
-						<div class="card-body">
-							<h5 class="card-title">Thống Kê Người Dùng</h5>
-							<div class="d-flex align-items-center">
-								<div
-									class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-									<i class="bi bi-people"></i>
+
+				<!-- Thống kê tiền lời -->
+				<div class="col-lg-12">
+
+					<div class="row">
+
+						<!-- Thống Kê Sản Phẩm -->
+						<div class="col-xxl-4 col-md-6">
+							<div class="card info-card sales-card">
+								<div class="card-body">
+									<h5 class="card-title">Sản phẩm đã bán</h5>
+									<div class="d-flex align-items-center">
+										<div
+											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+											<i class="bi bi-cart"></i>
+										</div>
+										<div class="ps-3">
+
+											<h6 class="card-text   pt-1 ">
+												${tienloi.totalProducts}
+											</h6>
+										</div>
+									</div>
 								</div>
-								<div class="ps-3">
-									<h6>Số Lượng Người Dùng</h6>
-									<h6 class="text-danger small pt-1 fw-bold">${adminCount}</h6>
+							</div>
+						</div>
+
+						<div class="col-xxl-4 col-md-6">
+							<div class="card info-card customers-card">
+								<div class="card-body">
+									<h5 class="card-title">Doanh thu</h5>
+									<div class="d-flex align-items-center">
+										<div
+											class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+											<i class="bi bi-cash-coin"></i>
+										</div>
+										<div class="ps-3">
+
+											<h6 class="card-text pt-1">
+												<fmt:formatNumber value="${tienloi.totalProfit}"
+													type="currency" currencyCode="VND" maxFractionDigits="0" />
+											</h6>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>

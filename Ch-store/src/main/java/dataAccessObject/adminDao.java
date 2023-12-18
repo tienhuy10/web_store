@@ -464,7 +464,7 @@ public class adminDao {
 	// Thống kê sản phẩm
 	public int getAdminProducts() throws Exception {
 		int count = 0;
-		String query = "SELECT COUNT(*) FROM Products";
+		String query = "SELECT SUM(Quantity) FROM Products";
 
 		try (Connection conn = new DBConnection().getConnection();
 				PreparedStatement ps = conn.prepareStatement(query);

@@ -11,6 +11,7 @@ import DataConnect.DBConnection;
 import Model.Bill;
 import Model.Category;
 import Model.Order;
+import Model.ProductOrderInfo;
 import Model.Products;
 import Model.UserOrderInfo;
 
@@ -150,30 +151,59 @@ public class OrderDao {
 		return billList;
 	}
 
-	public static void main(String[] args) throws Exception {
-	    try {
-	        // Lấy đối tượng Connection từ DBConnection
-	        Connection connection = DBConnection.getConnection();
+	// Thống kê tiền lời
+	public ProductOrderInfo getProductOrderInfo() {
+		ProductOrderInfo productOrderInfo = null;
+		try {
+			String query = "SELECT " + "SUM(o.o_quantity) AS tong_sp, "
+					+ "SUM(o.o_quantity * p.capital_price) AS tong_von, " + "SUM(o.o_quantity * p.Price) AS tong_ban, "
+					+ "SUM(o.o_quantity * (p.Price - p.capital_price)) AS tong_loi "
+					+ "FROM orders o INNER JOIN products p ON o.p_id = p.ID";
 
-	        // Khởi tạo đối tượng OrderDao với đối tượng Connection
-	        OrderDao orderDao = new OrderDao(connection);
+			try (PreparedStatement preparedStatement = this.con.prepareStatement(query)) {
+				try (ResultSet resultSet = preparedStatement.executeQuery()) {
+					if (resultSet.next()) {
+						int totalProducts = resultSet.getInt("tong_sp");
+						double totalCapital = resultSet.getDouble("tong_von");
+						double totalSales = resultSet.getDouble("tong_ban");
+						double totalProfit = resultSet.getDouble("tong_loi");
 
-	        // Gọi hàm để lấy danh sách thông tin đơn hàng của người dùng
-	        List<Bill> billList = orderDao.getBillInfoForUser("10");
-
-	        // In ra kết quả kiểm tra
-	        if (billList != null && !billList.isEmpty()) {
-	            for (Bill bill : billList) {
-	                System.out.println(bill);
-	            }
-	        } else {
-	            System.out.println("Không có thông tin đơn hàng.");
-	        }
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	        System.out.println(e.getMessage());
-	    }
+						productOrderInfo = new ProductOrderInfo(totalProducts, totalCapital, totalSales, totalProfit);
+					}
+				}
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+		return productOrderInfo;
 	}
 
+	public static void main(String[] args) throws Exception {
+		try {
+			// Lấy đối tượng Connection từ DBConnection
+			Connection connection = DBConnection.getConnection();
+
+			// Khởi tạo đối tượng OrderDao với đối tượng Connection
+			OrderDao orderDao = new OrderDao(connection);
+
+			// Gọi hàm để lấy thông tin đơn hàng của sản phẩm
+			ProductOrderInfo productOrderInfo = orderDao.getProductOrderInfo();
+
+			// In ra kết quả kiểm tra
+			if (productOrderInfo != null) {
+				System.out.println("Thông tin sản phẩm:");
+				System.out.println("Tổng Sản phẩm đã bán: " + productOrderInfo.getTotalProducts());
+				System.out.println("Tổng tiền lời: " + productOrderInfo.getTotalCapital());
+				System.out.println("Tổng tiền bán: " + productOrderInfo.getTotalSales());
+				System.out.println("Tổng số tiền bán: " + productOrderInfo.getTotalProfit());
+			} else {
+				System.out.println("Không có thông tin đơn hàng.");
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			System.out.println(e.getMessage());
+		}
+	}
 
 }

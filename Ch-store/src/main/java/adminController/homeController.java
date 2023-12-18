@@ -1,6 +1,7 @@
 package adminController;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -9,7 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DataConnect.DBConnection;
 import Model.Account;
+import Model.ProductOrderInfo;
+import dataAccessObject.OrderDao;
 import dataAccessObject.adminDao;
 
 /**
@@ -33,6 +37,17 @@ public class homeController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("utf-8");
+        
+        OrderDao orderDao;
+		try {
+			orderDao = new OrderDao(DBConnection.getConnection());
+			ProductOrderInfo productOrderInfo = orderDao.getProductOrderInfo();
+			request.setAttribute("tienloi", productOrderInfo);
+		} catch (Exception e) {			
+			e.printStackTrace();
+		}
+		
+		
 
         adminDao dataLoad = new adminDao();
 
