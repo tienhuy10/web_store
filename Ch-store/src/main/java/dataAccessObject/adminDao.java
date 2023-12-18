@@ -3,6 +3,7 @@ package dataAccessObject;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -251,7 +252,8 @@ public class adminDao {
 	}
 
 	// Thêm mới sản phẩm (insert)
-	public void insertProduct(String name, String image, String price, String info, String category, String quantity, String capital_price) {
+	public void insertProduct(String name, String image, String price, String info, String category, String quantity,
+			String capital_price) {
 		String query = "INSERT INTO Products (Title, Images, Price, Description, CateID, Quantity, capital_price)\r\n"
 				+ "VALUES (?, ?, ?, ?, ?, ?, ?);";
 		try {
@@ -272,7 +274,8 @@ public class adminDao {
 	}
 
 	// Cập nhật sản phẩm (Update)
-	public void editProduct(String name, String image, String price, String info, String category, String quantity, String capital_price, String id) {
+	public void editProduct(String name, String image, String price, String info, String category, String quantity,
+			String capital_price, String id) {
 		String query = "update Products set Title = ?, Images = ?, Price = ?, Description = ?, CateID = ?, Quantity = ?, capital_price = ? where ID = ?";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
@@ -424,6 +427,58 @@ public class adminDao {
 			ps.executeUpdate();
 		} catch (Exception e) {
 		}
+	}
+
+	// Thống kê
+	// Thống kế người dùng
+	public int getAdminAccounts() throws Exception {
+		int count = 0;
+		String query = "SELECT COUNT(*) FROM Account WHERE isAdmin = 0";
+
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (ps != null)
+					ps.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException ex) {
+				ex.printStackTrace();
+			}
+		}
+
+		return count;
+	}
+
+	// Thống kê sản phẩm
+	public int getAdminProducts() throws Exception {
+		int count = 0;
+		String query = "SELECT COUNT(*) FROM Products";
+
+		try (Connection conn = new DBConnection().getConnection();
+				PreparedStatement ps = conn.prepareStatement(query);
+				ResultSet rs = ps.executeQuery()) {
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return count;
 	}
 
 	public static void main(String[] args) {
