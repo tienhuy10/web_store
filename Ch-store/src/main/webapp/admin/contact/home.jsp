@@ -80,9 +80,9 @@
 										<tr>
 											<td class="text-center" scope="row">${p.ID}</td>
 											<td class="text-center">${p.name}</td>
-											<td class="text-center">${p.title}</td>
 											<td class="text-center">${p.phone}</td>
-											<td class="text-center" scope="row">${p.contents}</td>
+											<td class="text-center">${p.address}</td>
+											<td class="text-center" scope="row">${p.title}</td>
 											<td class="text-center">${p.contents}</td>
 											<td class="text-center"><a href="delete-contact?id=${p.ID}"
 												class="btn btn-danger btn-sm" title="Xóa thông tin"><i
@@ -104,7 +104,7 @@
 	<!-- ======= Footer ======= -->
 	<footer id="footer" class="footer">
 		<div class="copyright">
-			&copy; Copyright <strong><span>NiceAdmin</span></strong>. All Rights
+			&copy; Copyright <strong><span>Đại học Vinh</span></strong>. All Rights
 			Reserved
 		</div>
 		<div class="credits">

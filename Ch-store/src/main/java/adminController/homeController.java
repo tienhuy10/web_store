@@ -59,6 +59,15 @@ public class homeController extends HttpServlet {
             e.printStackTrace();
         }
         request.setAttribute("adminCount", adminCount);
+        
+        // Lấy số lượng danh mục
+        int CateCount = 0;
+        try {
+        	CateCount = dataLoad.getSumCate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        request.setAttribute("CateCount", CateCount);
 
         // Lấy số lượng sản phẩm
         int adminProducts = 0;

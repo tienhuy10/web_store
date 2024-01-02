@@ -31,14 +31,16 @@ public class DetailControl extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
-		response.setCharacterEncoding("utf-8");
+		response.setCharacterEncoding("UTF-8");
 		String id = request.getParameter("id");
 		
 		DAO dataLoad = new DAO();
 		Products products = dataLoad.getProductsbyID(id);
 		List<Menu> listMenu = dataLoad.getAllMenus();
+		List<Products> listProNew = dataLoad.getLast();
 		request.setAttribute("listM", listMenu);
 		
+		request.setAttribute("listProNew", listProNew);
 		request.setAttribute("products", products);
 		request.getRequestDispatcher("/views/Detail.jsp").forward(request, response);
 	}

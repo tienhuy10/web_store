@@ -85,18 +85,20 @@ table td, table th {
 <body>
 	<%@ include file="/views/Head.jsp"%>
 
+
 	<section class="intro">
 		<div class="bg-image h-100"
 			style="background-color: rgb(255, 255, 255);">
 			<div class="mask d-flex align-items-center h-100">
 				<div class="container">
+					<h2>Đặt hàng thành công</h2>
 					<div class="row justify-content-center">
 						<div class="col-12">
-							<h2>Thông tin đơn hàng</h2>
+
 							<div class="card shadow-2-strong"
 								style="background-color: rgb(59, 113, 202);">
 								<div class="card-body">
-
+									<h4 style="color: rgb(255, 255, 255)">Thông tin đơn hàng</h4>
 									<div class="table-responsive mb-4">
 										<table class="table table-borderless mb-0">
 											<thead>
@@ -105,7 +107,7 @@ table td, table th {
 													<th scope="col">Sản phẩm</th>
 													<th scope="col">Số lượng</th>
 													<th scope="col">Giá</th>
-<!-- 													<th scope="col">Xóa</th> -->
+													<!-- 													<th scope="col">Xóa</th> -->
 												</tr>
 											</thead>
 											<tbody>
@@ -124,10 +126,10 @@ table td, table th {
 													<td><%=o.getTitle()%></td>
 													<td><%=o.getQuantity()%></td>
 													<td><%=dcf.format(o.getPrice())%></td>
-<%-- 													<td><a href="cancel-order?id=<%=o.getOrderId()%>" --%>
-<!-- 														class="btn btn-danger btn-sm px-3"> <i -->
-<!-- 															class="fas fa-times"></i> -->
-<!-- 													</a></td> -->
+													<%-- 													<td><a href="cancel-order?id=<%=o.getOrderId()%>" --%>
+													<!-- 														class="btn btn-danger btn-sm px-3"> <i -->
+													<!-- 															class="fas fa-times"></i> -->
+													<!-- 													</a></td> -->
 												</tr>
 												<%
 												}
@@ -143,10 +145,10 @@ table td, table th {
 												Tổng tiền:
 												<%=dcf.format(totalPrice)%></h4>
 										</div>
-<!-- 										<div class="col-auto"> -->
+										<div class="col-auto">
 
-<!-- 											<a href="Home" class="btn btn-success btn-sm">Thoát</a> -->
-<!-- 										</div> -->
+											<a href="Home" class="btn btn-success btn-sm">Quay lại</a>
+										</div>
 									</div>
 								</div>
 							</div>

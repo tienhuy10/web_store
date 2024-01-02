@@ -13,6 +13,7 @@ import Model.Cart;
 import Model.Category;
 import Model.Menu;
 import Model.Products;
+import Model.TopProduct;
 import Model.UserOrderInfo;
 
 public class DAO {
@@ -21,7 +22,7 @@ public class DAO {
 	ResultSet rs = null; // Nhận kết quẳ
 
 	public DAO() {
-		// Không làm gì cả trong constructor này
+
 	}
 
 	public void setConnection(Connection conn) {
@@ -47,18 +48,37 @@ public class DAO {
 	// lấy danh sách dữ liệu sản phẩm mới nhất bảng product
 	public List<Products> getLast() {
 		List<Products> listProNew = new ArrayList<>();
-		String query = "select top 8*from Products order by id desc";
+		String query = "select top 16*from Products order by id desc";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listProNew.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				listProNew.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+						rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 		}
 		return listProNew;
+	}
+
+	// Lấy danh sách dữ liệu sản phẩm bán chạy
+	public List<TopProduct> getTopProducts() {
+		List<TopProduct> topProducts = new ArrayList<>();
+		String query = "SELECT TOP 8 p.ID, p.Images, p.Title, p.Price, SUM(o.o_quantity) AS TotalQuantitySold\r\n"
+				+ "FROM orders o JOIN products p ON o.p_id = p.ID WHERE p.Quantity IS NOT NULL\r\n"
+				+ "GROUP BY p.ID, p.Images, p.Title, p.Price ORDER BY TotalQuantitySold DESC;\r\n" + "";
+		try {
+			conn = new DBConnection().getConnection();// mo ket noi voi sql
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				topProducts.add(
+						new TopProduct(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getInt(5)));
+			}
+		} catch (Exception e) {
+		}
+		return topProducts;
 	}
 
 	// lấy danh sách dữ liệu tất cả sản phẩm bảng product
@@ -70,8 +90,8 @@ public class DAO {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+						rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 		}
@@ -88,8 +108,8 @@ public class DAO {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listProducts1.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				listProducts1.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+						rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -106,8 +126,8 @@ public class DAO {
 			ps.setString(1, id);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getDouble(5),
-						rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				return (new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getString(5),
+						rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -124,7 +144,7 @@ public class DAO {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listCategories.add(new Category(rs.getInt(1), rs.getString(2)));
+				listCategories.add(new Category(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 		} catch (Exception e) {
 		}
@@ -141,8 +161,8 @@ public class DAO {
 			ps.setString(1, "%" + txtSeach + "%");
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				searchProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				searchProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4),
+						rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -220,21 +240,21 @@ public class DAO {
 		return sum;
 	}
 
-
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		DAO dataLoad = new DAO();
 		List<Menu> listMenu = dataLoad.getAllMenus();
 		List<Products> listProNew = dataLoad.getLast();
 		List<Products> listProducts = dataLoad.getAllProducts();
+		List<TopProduct> topProducts = dataLoad.getTopProducts();
 		List<Category> listCategories = dataLoad.getAllCategories();
 		List<Products> searchProducts = dataLoad.searchByName("a");
-		
+
 //		List<UserOrderInfo> userOrderList = dataLoad.UserOrderInfo();
-//		for (UserOrderInfo o : userOrderList) {
-//			System.out.println(o);
-//		}
-//
+		for (TopProduct o : topProducts) {
+			System.out.println(o);
+		}
+
 	}
 
 }

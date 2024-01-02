@@ -57,7 +57,7 @@
 			<nav>
 				<ol class="breadcrumb">
 					<li class="breadcrumb-item"><a
-						href="<c:url value = "/home-admin" />">Home</a></li>
+						href="<c:url value = "/home-admin" />">Trang chủ</a></li>
 					<li class="breadcrumb-item active">Thống Kê</li>
 				</ol>
 			</nav>
@@ -102,7 +102,7 @@
 										</div>
 										<div class="ps-3">
 
-											<h6 class="card-text pt-1">${adminCount}</h6>
+											<h6 class="card-text pt-1">${CateCount}</h6>
 										</div>
 									</div>
 								</div>

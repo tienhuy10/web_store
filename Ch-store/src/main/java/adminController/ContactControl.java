@@ -36,7 +36,7 @@ public class ContactControl extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
-		
+		request.setCharacterEncoding("utf-8");
 		adminDao dataLoad = new adminDao();
 		List<Contact> listContacts = dataLoad.getAllContacts();
 		

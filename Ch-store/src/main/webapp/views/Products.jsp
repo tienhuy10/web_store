@@ -298,31 +298,13 @@ if (cart_list != null) {
 				<!-- sidebar -->
 				<!-- content -->
 				<div class="col-lg-9">
-					<header
-						class="d-sm-flex align-items-center border-bottom mb-4 pb-3">
-						<strong class="d-block py-2">Tên danh mục </strong>
-						<div class="ms-auto">
-							<select class="form-select d-inline-block w-auto border pt-1">
-								<option value="0">Best match</option>
-								<option value="1">Recommended</option>
-								<option value="2">High rated</option>
-								<option value="3">Randomly</option>
-							</select>
-							<div class="btn-group shadow-0 border">
-								<a href="#" class="btn btn-light" title="List view"> <i
-									class="fa fa-bars fa-lg"></i>
-								</a> <a href="#" class="btn btn-light active" title="Grid view">
-									<i class="fa fa-th fa-lg"></i>
-								</a>
-							</div>
-						</div>
-					</header>
+
 
 					<div class="row">
 						<c:forEach items="${listProducts}" var='p'>
 							<div class="col-lg-4 col-md-6 col-sm-6 d-flex">
 								<div class="card w-100 my-2 shadow-2-strong">
-									<img src="${p.images}" />
+									<img src="images/${p.images}" />
 									<div class="card-body d-flex flex-column">
 										<div class="d-flex flex-row">
 											<h5 class="mb-1 me-1">

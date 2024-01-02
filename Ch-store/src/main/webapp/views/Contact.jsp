@@ -13,7 +13,7 @@
 ArrayList<Cart> cart_list = (ArrayList<Cart>) session.getAttribute("cart-list");
 
 if (cart_list != null) {
-    request.setAttribute("cart_list", cart_list);
+	request.setAttribute("cart_list", cart_list);
 }
 %>
 <!DOCTYPE html>
@@ -61,24 +61,25 @@ if (cart_list != null) {
 		<div class="container">
 			<div class="row">
 				<div class="col-xl-8 col-lg-8 mb-4">
-					<div class="card mb-4 border shadow-0">
-						<div class="p-4 d-flex justify-content-between">
-							<div class="">
-								<h5>Hãy Liên Hệ Với Chúng Tôi</h5>
-								<p class="mb-0 text-wrap ">Vui lòng Đăng Nhập/Đăng Ký để
-									liên hệ</p>
-							</div>
-							<div
-								class="d-flex align-items-center justify-content-center flex-column flex-md-row">
-								<a href="#"
-									class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Đăng
-									Ký</a> <a href="#"
-									class="btn btn-primary shadow-0 text-nowrap w-100">Đăng
-									Nhập</a>
+					<c:if test="${sessionScope.acc == null}">
+						<div class="card mb-4 border shadow-0">
+							<div class="p-4 d-flex justify-content-between">
+								<div class="">
+									<h5>Hãy Liên Hệ Với Chúng Tôi</h5>
+									<p class="mb-0 text-wrap ">Vui lòng Đăng Nhập/Đăng Ký để
+										liên hệ</p>
+								</div>
+								<div
+									class="d-flex align-items-center justify-content-center flex-column flex-md-row">
+									<a href="#"
+										class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Đăng
+										Ký</a> <a href="#"
+										class="btn btn-primary shadow-0 text-nowrap w-100">Đăng
+										Nhập</a>
+								</div>
 							</div>
 						</div>
-					</div>
-
+					</c:if>
 
 					<!-- Contact -->
 					<form method="post" action="Contact">
@@ -105,15 +106,15 @@ if (cart_list != null) {
 									<div class="col-6 mb-3">
 										<p class="mb-0">Địa Chỉ</p>
 										<div class="form-outline">
-											<input name="address" type="text" id="typeTextl"
-												placeholder="" class="form-check h-100 border rounded-3" />
+											<input name="address" type="text" id="" placeholder=""
+												class="form-check h-100 border rounded-3" />
 										</div>
 									</div>
 
 									<div class="col-6 mb-3">
 										<p class="mb-0">Tiêu Đề</p>
 										<div class="form-outline">
-											<input name="title" type="text" id="typeTextl" placeholder=""
+											<input name="title" type="text" id="" placeholder=""
 												class="form-check h-100 border rounded-3" />
 										</div>
 									</div>

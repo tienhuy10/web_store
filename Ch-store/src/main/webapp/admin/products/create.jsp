@@ -57,7 +57,7 @@
 			<div class="row pb-2">
 				<h2>Thêm mới sản phẩm</h2>
 			</div>
-			<form method="post" action="product-create">
+			<form method="post" action="product-create" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Tên sản phẩm</label> <input name="name" type="text"
@@ -68,8 +68,9 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Hình ảnh</label>
-						<textarea name="image" class="form-control mb-3"
-							class="alert-danger" required></textarea>
+						<input class="form-control mb-3" type="file" name="image" accept="image/*">
+<!-- 						<textarea name="image" class="form-control mb-3" -->
+<!-- 							class="alert-danger" required></textarea> -->
 					</div>
 				</div>
 				<div class="form-row">

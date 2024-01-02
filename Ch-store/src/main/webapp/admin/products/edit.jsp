@@ -57,7 +57,7 @@
 			<div class="row pb-2">
 				<h2>Sửa sản phẩm</h2>
 			</div>
-			<form method="post" action="edit-product">
+			<form method="post" action="edit-product" enctype="multipart/form-data">
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>ID Sản phẩm</label> <input value="${products.ID}" readonly
@@ -75,8 +75,7 @@
 				<div class="form-row">
 					<div class="form-group col-md-6">
 						<label>Hình ảnh</label>
-						<textarea name="image" class="form-control mb-3"
-							class="alert-danger" required>${products.images}</textarea>
+						<input class="form-control mb-3" type="file" name="image" accept="image/*">
 					</div>
 				</div>
 				<div class="form-row">

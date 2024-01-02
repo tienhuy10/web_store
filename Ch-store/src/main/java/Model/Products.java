@@ -4,13 +4,12 @@ public class Products {
 
 	@Override
 	public String toString() {
-		return "Products [ID=" + ID + ", Name=" + Name + ", Title=" + Title + ", Images=" + Images + ", Price=" + Price
+		return "Products [ID=" + ID + ", Title=" + Title + ", Images=" + Images + ", Price=" + Price
 				+ ", Description=" + Description + ", CateID=" + CateID + ", Quantity=" + Quantity + ", capital_price="
 				+ capital_price + "]";
 	}
 
-	private int ID;
-	private String Name;
+	private int ID;	
 	private String Title;
 	private String Images;
 	private Double Price;
@@ -45,14 +44,6 @@ public class Products {
 
 	public void setID(int iD) {
 		ID = iD;
-	}
-
-	public String getName() {
-		return Name;
-	}
-
-	public void setName(String name) {
-		Name = name;
 	}
 
 	public String getTitle() {
@@ -95,10 +86,9 @@ public class Products {
 		CateID = cateID;
 	}
 
-	public Products(int id, String name, String title, String images, Double price, String description,
+	public Products(int id, String title, String images, Double price, String description,
 			int cateID, int quantity, Double capital_price) {
 		this.ID = id;
-		this.Name = name;
 		this.Description = description;
 		this.Images = images;
 		this.Title = title;
@@ -107,7 +97,4 @@ public class Products {
 		this.Quantity = quantity;
 		this.capital_price = capital_price;
 	}
-
-
-
 }

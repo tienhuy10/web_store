@@ -230,8 +230,8 @@ public class adminDao {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4),
-						rs.getDouble(5), rs.getString(6), rs.getInt(7), rs.getInt(8), rs.getDouble(9)));
+				listProducts.add(new Products(rs.getInt(1), rs.getString(2), rs.getString(3),
+						rs.getDouble(4), rs.getString(5), rs.getInt(6), rs.getInt(7), rs.getDouble(8)));
 			}
 		} catch (Exception e) {
 		}
@@ -335,7 +335,7 @@ public class adminDao {
 			ps = conn.prepareStatement(query);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				listCtg.add(new Category(rs.getInt(1), rs.getString(2)));
+				listCtg.add(new Category(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 		} catch (Exception e) {
 		}
@@ -378,7 +378,7 @@ public class adminDao {
 			ps.setString(1, ID);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				return (new Category(rs.getInt(1), rs.getString(2)));
+				return (new Category(rs.getInt(1), rs.getString(2), rs.getString(3)));
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -429,7 +429,26 @@ public class adminDao {
 		}
 	}
 
-	// Thống kê
+	// Thống kê danh mục
+	public int getSumCate() throws Exception {
+		int count = 0;
+		String query = "SELECT COUNT(*) FROM categories";
+
+		try {
+			conn = new DBConnection().getConnection();
+			ps = conn.prepareStatement(query);
+			rs = ps.executeQuery();
+
+			if (rs.next()) {
+				count = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return count;
+	}
+
 	// Thống kế người dùng
 	public int getAdminAccounts() throws Exception {
 		int count = 0;
@@ -445,17 +464,6 @@ public class adminDao {
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (ps != null)
-					ps.close();
-				if (conn != null)
-					conn.close();
-			} catch (SQLException ex) {
-				ex.printStackTrace();
-			}
 		}
 
 		return count;

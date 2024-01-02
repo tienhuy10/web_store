@@ -30,13 +30,12 @@ public class ProductsDao {
 			while (rs.next()) {
 				row = new Products();
 				row.setID(rs.getInt(1));
-				row.setName(rs.getString(2));
-				row.setTitle(rs.getString(3));
-				row.setImages(rs.getString(4));
-				row.setPrice(rs.getDouble(5));			
-				row.setDescription(rs.getString(6));
-				row.setCateID(rs.getInt(7));
-				row.setQuantity(rs.getInt(8));
+				row.setTitle(rs.getString(2));
+				row.setImages(rs.getString(3));
+				row.setPrice(rs.getDouble(4));			
+				row.setDescription(rs.getString(5));
+				row.setCateID(rs.getInt(6));
+				row.setQuantity(rs.getInt(7));
 				
 			}
 		} catch (Exception e) {
