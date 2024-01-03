@@ -75,21 +75,21 @@
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>email</label> <input value="${account.fullname}"
+						<label>email</label> <input value="${account.email}"
 							name="email" type="email" class="form-control mb-3"
 							placeholder="Nhập email" /> <span class="alert-danger"></span>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Tên người dùng</label> <input value="${account.fullname}"
+						<label>Tên người dùng</label> <input value="${account.username}"
 							name="username" type="text" class="form-control mb-3"
 							placeholder="Nhập tên người dùng" /> <span class="alert-danger"></span>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-6">
-						<label>Mật khẩu</label> <input value="${account.fullname}"
+						<label>Mật khẩu</label> <input value="${account.password}"
 							name="password" type="password" class="form-control mb-3"
 							placeholder="Nhập mật khẩu" /> <span class="alert-danger"></span>
 					</div>

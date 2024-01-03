@@ -81,7 +81,7 @@ public class adminDao {
 	// Lấy danh sách dữ liệu tài khoản
 	public List<Account> getAllAccounts() {
 		List<Account> listAcc = new ArrayList<>();
-		String query = "select*from Account";
+		String query = "select*from Account where isAdmin = 0";
 		try {
 			conn = new DBConnection().getConnection();// mo ket noi voi sql
 			ps = conn.prepareStatement(query);

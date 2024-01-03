@@ -102,8 +102,8 @@ if (cart_list != null) {
 								</div> --%>
 
 								<div class="col-lg-2 col-sm-6 col-6 d-flex ">
-									<img src="<%=c.getImages()%>" class="border rounded me-3"
-										style="width: 96px; height: 96px;" />
+									<img src="images/<%=c.getImages()%>"
+										class="border rounded me-3" style="width: 96px; height: 96px;" />
 								</div>
 								<div class="col-lg-2 col-sm-6 col-6 d-flex ">
 									<div class="">
@@ -139,8 +139,8 @@ if (cart_list != null) {
 								<div
 									class="col-lg col-sm-6 d-flex justify-content-sm-center justify-content-md-start justify-content-lg-center justify-content-xl-end mb-2">
 									<div class="float-md-end">
-<!-- 										<a href="order-now" -->
-<!-- 											class="btn btn-light border px-2 icon-hover-primary">Mua</a> -->
+										<!-- 										<a href="order-now" -->
+										<!-- 											class="btn btn-light border px-2 icon-hover-primary">Mua</a> -->
 										<a href="remove-product-cart?id=<%=c.getID()%>"
 											class="btn btn-light border text-danger icon-hover-danger">
 											Remove</a>
@@ -156,59 +156,44 @@ if (cart_list != null) {
 
 						<div class="border-top pt-4 mx-4 mb-4">
 							<p>
-								<i class="fas fa-truck text-muted fa-lg"></i> Free Delivery
-								within 1-2 weeks
+								<i class="fas fa-truck text-muted fa-lg"></i> Giao hàng miễn phí
+								trong vòng 1-2 tuần
 							</p>
-							<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
-								adipisicing elit, sed do eiusmod tempor incididunt ut labore et
-								dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-								exercitation ullamco laboris nisi ut aliquip</p>
+							<p class="text-muted"></p>
 						</div>
 					</div>
 				</div>
 				<!-- cart -->
 				<!-- summary -->
 				<div class="col-lg-3">
-					<div class="card mb-3 border shadow-0">
-						<div class="card-body">
-							<form>
-								<div class="form-group">
-									<label class="form-label">Have coupon?</label>
-									<div class="input-group">
-										<input type="text" class="form-control border" name=""
-											placeholder="Coupon code" />
-										<button class="btn btn-light border">Apply</button>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
+<!-- 					<div class="card mb-3 border shadow-0"> -->
+<!-- 						<div class="card-body"> -->
+<!-- 							<form> -->
+<!-- 								<div class="form-group"> -->
+<!-- 									<label class="form-label">Have coupon?</label> -->
+<!-- 									<div class="input-group"> -->
+<!-- 										<input type="text" class="form-control border" name="" -->
+<!-- 											placeholder="Coupon code" /> -->
+<!-- 										<button class="btn btn-light border">Apply</button> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
+<!-- 							</form> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					<div class="card shadow-0 border">
 						<div class="card-body">
 							<div class="d-flex justify-content-between">
-								<p class="mb-2">Total price:</p>
+								<p class="mb-2">Tổng tiền:</p>
 								<p class="mb-2">
 									<fmt:formatNumber value="${total>0?total:0}" type="currency"
 										currencyCode="VND" maxFractionDigits="0" />
 								</p>
 							</div>
-							<div class="d-flex justify-content-between">
-								<p class="mb-2">Discount:</p>
-								<p class="mb-2 text-success">-$60.00</p>
-							</div>
-							<div class="d-flex justify-content-between">
-								<p class="mb-2">TAX:</p>
-								<p class="mb-2">$14.00</p>
-							</div>
-							<hr />
-							<div class="d-flex justify-content-between">
-								<p class="mb-2">Total price:</p>
-								<p class="mb-2 fw-bold">$283.00</p>
-							</div>
+							
 
 							<div class="mt-3">
 								<a href="check-out" class="btn btn-success w-100 shadow-0 mb-2">
-									Tiếp tục </a> <a href="Products"
+									Đặt hàng </a> <a href="Products"
 									class="btn btn-light w-100 border mt-2"> Tiếp tục mua sắm </a>
 							</div>
 						</div>

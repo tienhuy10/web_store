@@ -73,7 +73,7 @@
 									<tr>
 										<th scope="col">#</th>
 										<th scope="col">Tên người dùng</th>
-										<th scope="col">Mật khẩu</th>
+<!-- 										<th scope="col">Mật khẩu</th> -->
 										<th scope="col">Email</th>
 										<th scope="col">Fullname</th>
 										<th scope="col">Chức năng</th>
@@ -84,7 +84,7 @@
 										<tr>
 											<th scope="row">${acc.ID}</th>
 											<td>${acc.username}</td>
-											<td>${acc.password}</td>
+<%-- 											<td>${acc.password}</td> --%>
 											<td>${acc.email}</td>
 											<td>${acc.fullname}</td>
 											<td><a href="edit-account?id=${acc.ID}" class="btn btn-primary btn-sm"

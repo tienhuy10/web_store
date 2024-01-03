@@ -97,7 +97,7 @@
 	<section>
 		<div class="container my-5">
 			<header class="mb-4">
-				<h3>Gợi ý</h3>
+				<h3>Sản phẩm mới</h3>
 			</header>
 
 			<div class="row">

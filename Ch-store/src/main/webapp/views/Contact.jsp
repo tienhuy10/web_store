@@ -71,9 +71,9 @@ if (cart_list != null) {
 								</div>
 								<div
 									class="d-flex align-items-center justify-content-center flex-column flex-md-row">
-									<a href="#"
+									<a href="signup"
 										class="btn btn-outline-primary me-0 me-md-2 mb-2 mb-md-0 w-100">Đăng
-										Ký</a> <a href="#"
+										Ký</a> <a href="login"
 										class="btn btn-primary shadow-0 text-nowrap w-100">Đăng
 										Nhập</a>
 								</div>
