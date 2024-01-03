@@ -42,15 +42,13 @@ public class HomeControl extends HttpServlet {
 		response.setContentType("text/html");
 		response.setCharacterEncoding("utf-8");
 		
-		String id = request.getParameter("id"); // Tạo biến lưu giá trị của tham số request HTTP
-
-		// Lấy dữ liệu từ DataLoad
+		String id = request.getParameter("id"); 
 		DAO dataLoad = new DAO();
 		
-		List<Menu> listMenu = dataLoad.getAllMenus(); // Load dữ liệu thanh Menu
-		List<Products> listProNew = dataLoad.getLast(); // Load danh sách các sản phẩm mới nhất (8 sản phẩm)
+		List<Menu> listMenu = dataLoad.getAllMenus();
+		List<Products> listProNew = dataLoad.getLast(); 
 		List<TopProduct> topProducts = dataLoad.getTopProducts();
-		Products products = dataLoad.getProductsbyID(id); //Lấy chi tiết sản phẩm theo ID
+		Products products = dataLoad.getProductsbyID(id); 
 		List<Category> listCategories = dataLoad.getAllCategories();
 		
 		// set data lên html

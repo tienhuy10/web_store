@@ -96,7 +96,7 @@ if (cart_list != null) {
 									</div>
 
 									<div class="col-6 mb-3">
-										<p class="mb-0">Phone</p>
+										<p class="mb-0">Điện thoại</p>
 										<div class="form-outline">
 											<input name="phone" type="tel" id="typePhone" value=" "
 												class="form-check h-100 border rounded-3" />

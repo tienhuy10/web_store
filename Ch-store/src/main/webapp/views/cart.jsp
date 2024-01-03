@@ -132,7 +132,7 @@ if (cart_list != null) {
 												href="quantity-inc-dec?action=inc&id=<%=c.getID()%>"
 												class="btn btn-sm btn-incre btn-primary"><i
 												class="fas fa-plus-square"></i></a>
-											<button type="submit" class="btn btn-primary btn-sm mx-2">Mua</button>
+<!-- 											<button type="submit" class="btn btn-primary btn-sm mx-2">Mua</button> -->
 										</div>
 									</form>
 								</div>
@@ -143,7 +143,7 @@ if (cart_list != null) {
 										<!-- 											class="btn btn-light border px-2 icon-hover-primary">Mua</a> -->
 										<a href="remove-product-cart?id=<%=c.getID()%>"
 											class="btn btn-light border text-danger icon-hover-danger">
-											Remove</a>
+											Xóa</a>
 									</div>
 								</div>
 							</div>

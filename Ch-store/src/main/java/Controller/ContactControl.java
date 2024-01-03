@@ -56,7 +56,7 @@ public class ContactControl extends HttpServlet {
 		
 		
 		String name = request.getParameter("name");
-		String title = request.getParameter("image");
+		String title = request.getParameter("title");
 		String phone = request.getParameter("phone");
 		String address = request.getParameter("address");
 		String contents = request.getParameter("contents");

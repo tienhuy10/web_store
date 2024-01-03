@@ -3,11 +3,8 @@ package Model;
 public class Menu {
 	private int MenuID;
 	private String MenuName;
-
 	private boolean ActionName;
-
 	private int MenuOrder;
-
 	public Menu(int MenuID, String MenuName, boolean ActionName, int MenuOrder) {
 		this.MenuID = MenuID;
 		this.MenuName = MenuName;
